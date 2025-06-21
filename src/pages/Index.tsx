@@ -353,9 +353,12 @@ const Index = () => {
               size="lg"
               variant="secondary"
               className="h-14 px-8 text-base"
+              asChild
             >
-              Start Your Free Trial
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <Link to="/onboarding/step-1">
+                Start Your Free Trial
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
             </Button>
             <Button
               size="lg"
