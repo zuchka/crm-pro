@@ -250,8 +250,8 @@ const Index = () => {
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
-                <Button className="w-full mt-6" variant="outline">
-                  Get Started
+                <Button className="w-full mt-6" variant="outline" asChild>
+                  <Link to="/onboarding/step-1">Get Started</Link>
                 </Button>
               </CardContent>
             </Card>
