@@ -87,9 +87,11 @@ const Index = () => {
               businesses.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="h-14 px-8 text-base">
-                Start Free Trial
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button size="lg" className="h-14 px-8 text-base" asChild>
+                <Link to="/onboarding/step-1">
+                  Start Free Trial
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
               </Button>
               <Button
                 variant="outline"
