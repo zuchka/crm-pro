@@ -282,7 +282,9 @@ const Index = () => {
                     <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
-                <Button className="w-full mt-6">Get Started</Button>
+                <Button className="w-full mt-6" asChild>
+                  <Link to="/onboarding/step-1">Get Started</Link>
+                </Button>
               </CardContent>
             </Card>
 
