@@ -63,9 +63,8 @@ const Index = () => {
                 About
               </a>
               <Button
-                variant="outline"
                 size="sm"
-                className="border-dashboard-accent-teal text-dashboard-accent-teal hover:bg-dashboard-accent-teal hover:text-dashboard-dark"
+                className="bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
               >
                 Sign In
               </Button>
