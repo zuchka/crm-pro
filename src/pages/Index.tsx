@@ -64,13 +64,13 @@ const Index = () => {
               </a>
               <Button
                 size="sm"
-                className="bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
+                className="bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
               >
                 Sign In
               </Button>
               <Button
                 size="sm"
-                className="bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
+                className="bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
               >
                 Get Started
               </Button>
