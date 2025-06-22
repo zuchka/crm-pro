@@ -429,8 +429,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              variant="secondary"
-              className="h-14 px-8 text-base bg-dashboard-dark text-dashboard-text-primary hover:bg-dashboard-card"
+              className="h-14 px-8 text-base bg-dashboard-dark text-dashboard-text-primary hover:!bg-dashboard-card"
               asChild
             >
               <Link to="/onboarding/step-1">
