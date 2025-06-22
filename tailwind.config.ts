@@ -74,6 +74,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Figma dark theme colors
+        dashboard: {
+          dark: "#171821",
+          card: "#21222D",
+          sidebar: "#2B2B36",
+          "text-primary": "#FFFFFF",
+          "text-secondary": "#E8E8E8",
+          "text-muted": "#A0A0A0",
+          "text-accent": "#87888C",
+          "accent-teal": "#A9DFD8",
+          "accent-orange": "#FCB859",
+          "accent-pink": "#F2C8ED",
+          "accent-blue": "#20AEF3",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
