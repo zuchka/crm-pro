@@ -101,7 +101,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="h-14 px-8 text-base bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
+                className="h-14 px-8 text-base bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
                 asChild
               >
                 <Link to="/onboarding/step-1">
