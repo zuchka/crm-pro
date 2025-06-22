@@ -110,9 +110,8 @@ const Index = () => {
                 </Link>
               </Button>
               <Button
-                variant="outline"
                 size="lg"
-                className="h-14 px-8 text-base border-dashboard-accent-blue text-dashboard-accent-blue hover:bg-dashboard-accent-blue hover:text-dashboard-dark"
+                className="h-14 px-8 text-base bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
               >
                 Watch Demo
               </Button>
