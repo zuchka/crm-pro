@@ -347,7 +347,7 @@ const Index = () => {
                   </div>
                 ))}
                 <Button
-                  className="w-full mt-6 bg-dashboard-accent-teal text-dashboard-dark hover:bg-opacity-90"
+                  className="w-full mt-6 bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
                   asChild
                 >
                   <Link to="/onboarding/step-1">Get Started</Link>
