@@ -1,0 +1,252 @@
+// Import the base react-big-calendar SASS styles
+@import 'react-big-calendar/lib/sass/styles';
+
+// Dashboard theme variables
+$dashboard-dark: #171821;
+$dashboard-card: #21222D;
+$dashboard-sidebar: #2B2B36;
+$dashboard-text-primary: #FFFFFF;
+$dashboard-text-secondary: #E8E8E8;
+$dashboard-text-muted: #A0A0A0;
+$dashboard-text-accent: #87888C;
+$dashboard-accent-teal: #A9DFD8;
+$dashboard-accent-orange: #FCB859;
+$dashboard-accent-pink: #F2C8ED;
+$dashboard-accent-blue: #20AEF3;
+
+// Override react-big-calendar variables and styles for dark theme
+.rbc-calendar {
+  font-family: inherit;
+  background-color: transparent;
+  color: rgb(169, 223, 216);
+}
+
+// Headers
+.rbc-header {
+  background-color: $dashboard-sidebar;
+  border-bottom: 1px solid $dashboard-sidebar;
+  padding: 8px 6px;
+  font-weight: 600;
+  color: rgb(169, 223, 216);
+
+  span {
+    color: rgb(169, 223, 216);
+  }
+}
+
+// Calendar grid and backgrounds
+.rbc-month-view,
+.rbc-time-view {
+  background-color: transparent;
+  border: 1px solid $dashboard-sidebar;
+}
+
+.rbc-month-row {
+  border-bottom: 1px solid $dashboard-sidebar;
+}
+
+.rbc-day-bg {
+  background-color: $dashboard-card;
+  border-right: 1px solid $dashboard-sidebar;
+
+  &:hover {
+    background-color: $dashboard-sidebar;
+  }
+}
+
+// Off-range days styling - darker background and text
+.rbc-off-range-bg {
+  background-color: #0d0e15; // Much darker than dashboard-dark
+  opacity: 0.8;
+}
+
+.rbc-off-range {
+  color: #4a4a4a !important; // Dark gray text
+  opacity: 0.9;
+
+  .rbc-button-link {
+    color: #4a4a4a !important;
+  }
+}
+
+// Today highlighting
+.rbc-today {
+  background-color: rgba(169, 223, 216, 0.2);
+}
+
+// Date cells
+.rbc-date-cell {
+  color: rgb(169, 223, 216);
+  font-weight: 600;
+
+  .rbc-button-link {
+    color: rgb(169, 223, 216);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      color: rgb(169, 223, 216);
+      text-decoration: underline;
+    }
+  }
+}
+
+// Toolbar styling
+.rbc-toolbar {
+  background-color: transparent;
+  border-bottom: 1px solid $dashboard-sidebar;
+  padding: 16px 0;
+  margin-bottom: 0;
+
+  .rbc-toolbar-label {
+    color: rgb(169, 223, 216);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .rbc-btn-group {
+    button {
+      background-color: $dashboard-sidebar;
+      border: 1px solid $dashboard-accent-teal;
+      color: rgb(169, 223, 216);
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin: 0 2px;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        background-color: $dashboard-accent-teal;
+        color: $dashboard-dark;
+      }
+
+      &.rbc-active {
+        background-color: $dashboard-accent-teal;
+        color: $dashboard-dark;
+        border-color: $dashboard-accent-teal;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $dashboard-accent-teal;
+      }
+    }
+  }
+}
+
+// Events
+.rbc-event {
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  &:focus {
+    outline: 2px solid $dashboard-accent-teal;
+    outline-offset: 2px;
+  }
+
+  &.rbc-selected {
+    box-shadow: 0 0 0 3px $dashboard-accent-teal;
+    transform: scale(1.02);
+  }
+}
+
+// Time views
+.rbc-time-header {
+  background-color: $dashboard-sidebar;
+  border-bottom: 1px solid $dashboard-sidebar;
+}
+
+.rbc-time-content {
+  border-left: 1px solid $dashboard-sidebar;
+}
+
+.rbc-time-gutter {
+  background-color: $dashboard-sidebar;
+  border-right: 1px solid $dashboard-sidebar;
+}
+
+.rbc-timeslot-group {
+  border-bottom: 1px solid $dashboard-sidebar;
+}
+
+.rbc-time-slot {
+  color: rgb(169, 223, 216);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+// Agenda view
+.rbc-agenda-view {
+  background-color: transparent;
+
+  table {
+    border: 1px solid $dashboard-sidebar;
+  }
+
+  tbody > tr > td {
+    border-top: 1px solid $dashboard-sidebar;
+    color: rgb(169, 223, 216);
+    padding: 8px;
+  }
+}
+
+.rbc-agenda-date-cell {
+  background-color: $dashboard-sidebar;
+  color: rgb(169, 223, 216);
+  font-weight: 600;
+}
+
+.rbc-agenda-time-cell {
+  color: rgb(169, 223, 216);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+// Popups and overlays
+.rbc-overlay {
+  background-color: $dashboard-card;
+  border: 1px solid $dashboard-accent-teal;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: rgb(169, 223, 216);
+}
+
+.rbc-overlay-header {
+  background-color: $dashboard-sidebar;
+  color: rgb(169, 223, 216);
+  padding: 8px 12px;
+  border-bottom: 1px solid $dashboard-sidebar;
+  font-weight: 600;
+}
+
+.rbc-show-more {
+  color: $dashboard-accent-teal;
+  font-weight: 500;
+
+  &:hover {
+    color: $dashboard-accent-teal;
+    text-decoration: underline;
+  }
+}
+
+// Calendar container
+.calendar-container {
+  background-color: transparent;
+  border-radius: 6px;
+  overflow: hidden;
+
+  .rbc-calendar {
+    font-family: inherit;
+  }
+}
