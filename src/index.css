@@ -110,6 +110,19 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dashboard Colors */
+    --dashboard-dark: #171821;
+    --dashboard-card: #21222D;
+    --dashboard-sidebar: #2B2B36;
+    --dashboard-text-primary: #FFFFFF;
+    --dashboard-text-secondary: #E8E8E8;
+    --dashboard-text-muted: #A0A0A0;
+    --dashboard-text-accent: #87888C;
+    --dashboard-accent-teal: #A9DFD8;
+    --dashboard-accent-orange: #FCB859;
+    --dashboard-accent-pink: #F2C8ED;
+    --dashboard-accent-blue: #20AEF3;
   }
 }
 
