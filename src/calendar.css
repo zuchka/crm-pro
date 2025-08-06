@@ -242,24 +242,34 @@
   font-family: inherit;
 }
 
-/* Additional text color overrides */
-.rbc-calendar * {
-  color: inherit;
-}
-
-.rbc-calendar .rbc-month-view,
-.rbc-calendar .rbc-time-view,
-.rbc-calendar .rbc-agenda-view {
-  color: var(--dashboard-accent-teal);
+/* Force teal color on ALL calendar text elements */
+.rbc-calendar,
+.rbc-calendar *,
+.rbc-calendar span,
+.rbc-calendar button,
+.rbc-calendar .rbc-button-link,
+.rbc-calendar .rbc-date-cell,
+.rbc-calendar .rbc-header,
+.rbc-calendar .rbc-header span,
+.rbc-calendar .rbc-toolbar-label,
+.rbc-calendar .rbc-off-range,
+.rbc-calendar .rbc-current,
+.rbc-calendar .rbc-now {
+  color: var(--dashboard-accent-teal) !important;
 }
 
 .rbc-calendar .rbc-button-link {
-  color: var(--dashboard-accent-teal);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .rbc-calendar .rbc-button-link:hover {
-  color: var(--dashboard-accent-teal);
+  color: var(--dashboard-accent-teal) !important;
   text-decoration: underline;
+}
+
+.rbc-calendar .rbc-off-range,
+.rbc-calendar .rbc-off-range .rbc-button-link {
+  color: var(--dashboard-text-muted) !important;
+  opacity: 0.7;
 }
