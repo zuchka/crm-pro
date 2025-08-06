@@ -391,7 +391,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
                 cell: "h-12 w-12 text-center text-sm p-0 relative rounded-md transition-colors",
                 day: "h-12 w-12 p-0 font-medium text-dashboard-dark aria-selected:opacity-100 rounded-md hover:bg-dashboard-dark/10 transition-colors",
                 day_range_end: "day-range-end",
-                day_selected: "bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal font-semibold",
+                day_selected: "bg-dashboard-accent-teal text-dashboard-dark hover:bg-dashboard-accent-teal/90 hover:text-dashboard-dark font-semibold",
                 day_today: "bg-dashboard-accent-teal/20 text-dashboard-dark font-semibold border border-dashboard-accent-teal/40",
                 day_outside: "text-dashboard-dark/50 opacity-70 hover:text-dashboard-dark/70",
                 day_disabled: "text-dashboard-dark/30 opacity-40 cursor-not-allowed hover:bg-transparent",
