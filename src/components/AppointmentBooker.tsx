@@ -423,7 +423,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
                   className={cn(
                     "w-full h-auto p-4 text-left justify-start transition-all",
                     selectedMeetingType === type.value
-                      ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md border-dashboard-dark"
+                      ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md border-dashboard-dark hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal"
                       : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
                   )}
                 >
