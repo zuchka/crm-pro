@@ -289,3 +289,36 @@
 .calendar-container .rbc-toolbar button span {
   color: var(--dashboard-accent-teal) !important;
 }
+
+/* Nuclear option - override ALL possible text elements with maximum specificity */
+.calendar-container .rbc-calendar * {
+  color: rgb(169, 223, 216) !important;
+}
+
+/* Specific overrides for all button texts and navigation */
+.rbc-btn-group button,
+.rbc-btn-group button *,
+.rbc-toolbar button,
+.rbc-toolbar button *,
+.rbc-toolbar span,
+.rbc-toolbar span *,
+.rbc-button-link,
+.rbc-button-link *,
+.rbc-date-cell,
+.rbc-date-cell *,
+.rbc-header,
+.rbc-header *,
+div[class*="rbc"] *,
+button[class*="rbc"],
+button[class*="rbc"] *,
+span[class*="rbc"],
+span[class*="rbc"] * {
+  color: rgb(169, 223, 216) !important;
+}
+
+/* Override inline styles with maximum specificity */
+.calendar-container button[style*="color"],
+.calendar-container span[style*="color"],
+.calendar-container div[style*="color"] {
+  color: rgb(169, 223, 216) !important;
+}
