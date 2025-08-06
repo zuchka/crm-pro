@@ -43,11 +43,19 @@
 
 .rbc-date-cell {
   color: var(--dashboard-text-primary);
-  padding: 4px 6px;
+  padding: 6px 8px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .rbc-off-range {
   color: var(--dashboard-text-muted);
+  opacity: 0.6;
+}
+
+.rbc-date-cell.rbc-now {
+  color: var(--dashboard-accent-teal);
+  font-weight: 700;
 }
 
 .rbc-current-time-indicator {
