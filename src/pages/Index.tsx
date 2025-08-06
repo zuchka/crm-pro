@@ -452,6 +452,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               className="h-14 px-8 text-base bg-transparent border-dashboard-dark text-dashboard-dark hover:bg-dashboard-dark hover:text-dashboard-text-primary"
+              onClick={() => setShowScheduleDialog(true)}
             >
               Schedule Demo
             </Button>
