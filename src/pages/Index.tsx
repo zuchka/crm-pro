@@ -113,7 +113,7 @@ const Index = () => {
                 size="lg"
                 className="h-14 px-8 text-base bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
               >
-                Watch Demo
+                Schedule Demo
               </Button>
             </div>
             <div className="mt-8 flex items-center justify-center gap-6 text-sm text-dashboard-text-muted">
