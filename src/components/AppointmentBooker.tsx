@@ -312,9 +312,6 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-dashboard-dark mb-2">
-          Schedule Your Demo
-        </h2>
         <p className="text-dashboard-dark/70 text-lg">
           Choose your preferred date, time, and meeting type
         </p>
