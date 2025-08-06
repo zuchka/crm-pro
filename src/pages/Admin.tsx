@@ -32,12 +32,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Users,
   Settings,
@@ -105,7 +100,7 @@ const Admin = () => {
     {
       id: "2",
       name: "Sarah Johnson",
-      email: "sarah@crmpro.com", 
+      email: "sarah@crmpro.com",
       role: "Sales Manager",
       status: "Active",
       lastLogin: "2024-01-15 09:45",
@@ -206,29 +201,40 @@ const Admin = () => {
     },
   ];
 
-  const filteredUsers = users.filter(user => {
-    const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesRole = userFilterRole === "all" || user.role === userFilterRole;
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch =
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRole =
+      userFilterRole === "all" || user.role === userFilterRole;
     return matchesSearch && matchesRole;
   });
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case "Admin": return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
-      case "Sales Manager": return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
-      case "Sales Rep": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-      case "Support": return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+      case "Admin":
+        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
+      case "Sales Manager":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
+      case "Sales Rep":
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
+      case "Support":
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Active": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-      case "Inactive": return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
-      case "Pending": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+      case "Active":
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
+      case "Inactive":
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
+      case "Pending":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
     }
   };
 
@@ -261,7 +267,9 @@ const Admin = () => {
                 </Link>
               </Button>
               <div className="w-8 h-8 bg-dashboard-accent-orange rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-dashboard-dark">JD</span>
+                <span className="text-sm font-medium text-dashboard-dark">
+                  JD
+                </span>
               </div>
             </div>
           </div>
@@ -278,7 +286,11 @@ const Admin = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
           <TabsList className="grid w-full grid-cols-6 bg-dashboard-card border border-dashboard-sidebar">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
@@ -311,7 +323,10 @@ const Admin = () => {
             {/* Metrics Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {systemMetrics.map((metric, index) => (
-                <Card key={index} className="bg-dashboard-card border-dashboard-sidebar">
+                <Card
+                  key={index}
+                  className="bg-dashboard-card border-dashboard-sidebar"
+                >
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium text-dashboard-text-muted">
                       {metric.label}
@@ -323,10 +338,14 @@ const Admin = () => {
                       {metric.value}
                     </div>
                     <p className="text-xs text-dashboard-text-muted">
-                      <span className={cn(
-                        "text-xs",
-                        metric.change.startsWith("+") ? "text-green-500" : "text-red-500"
-                      )}>
+                      <span
+                        className={cn(
+                          "text-xs",
+                          metric.change.startsWith("+")
+                            ? "text-green-500"
+                            : "text-red-500",
+                        )}
+                      >
                         {metric.change}
                       </span>{" "}
                       from last month
@@ -339,7 +358,9 @@ const Admin = () => {
             {/* Recent Activity */}
             <Card className="bg-dashboard-card border-dashboard-sidebar">
               <CardHeader>
-                <CardTitle className="text-dashboard-text-primary">Recent Activity</CardTitle>
+                <CardTitle className="text-dashboard-text-primary">
+                  Recent Activity
+                </CardTitle>
                 <CardDescription className="text-dashboard-text-muted">
                   Latest actions across your CRM system
                 </CardDescription>
@@ -353,10 +374,13 @@ const Admin = () => {
                       </div>
                       <div className="flex-1">
                         <p className="text-sm text-dashboard-text-primary">
-                          <span className="font-medium">{activity.user}</span> {activity.action}{" "}
+                          <span className="font-medium">{activity.user}</span>{" "}
+                          {activity.action}{" "}
                           <span className="font-medium">{activity.target}</span>
                         </p>
-                        <p className="text-xs text-dashboard-text-muted">{activity.time}</p>
+                        <p className="text-xs text-dashboard-text-muted">
+                          {activity.time}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -376,12 +400,17 @@ const Admin = () => {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="text-dashboard-text-primary">User Management</CardTitle>
+                    <CardTitle className="text-dashboard-text-primary">
+                      User Management
+                    </CardTitle>
                     <CardDescription className="text-dashboard-text-muted">
                       Manage system users and their permissions
                     </CardDescription>
                   </div>
-                  <Dialog open={showAddUserDialog} onOpenChange={setShowAddUserDialog}>
+                  <Dialog
+                    open={showAddUserDialog}
+                    onOpenChange={setShowAddUserDialog}
+                  >
                     <DialogTrigger asChild>
                       <Button className="bg-dashboard-accent-teal text-dashboard-dark hover:bg-dashboard-accent-teal/80">
                         <Plus className="w-4 h-4 mr-2" />
@@ -390,33 +419,69 @@ const Admin = () => {
                     </DialogTrigger>
                     <DialogContent className="bg-dashboard-card border-dashboard-sidebar">
                       <DialogHeader>
-                        <DialogTitle className="text-dashboard-text-primary">Add New User</DialogTitle>
+                        <DialogTitle className="text-dashboard-text-primary">
+                          Add New User
+                        </DialogTitle>
                       </DialogHeader>
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="firstName" className="text-dashboard-text-primary">First Name</Label>
-                            <Input id="firstName" className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
+                            <Label
+                              htmlFor="firstName"
+                              className="text-dashboard-text-primary"
+                            >
+                              First Name
+                            </Label>
+                            <Input
+                              id="firstName"
+                              className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
+                            />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="lastName" className="text-dashboard-text-primary">Last Name</Label>
-                            <Input id="lastName" className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
+                            <Label
+                              htmlFor="lastName"
+                              className="text-dashboard-text-primary"
+                            >
+                              Last Name
+                            </Label>
+                            <Input
+                              id="lastName"
+                              className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
+                            />
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email" className="text-dashboard-text-primary">Email</Label>
-                          <Input id="email" type="email" className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
+                          <Label
+                            htmlFor="email"
+                            className="text-dashboard-text-primary"
+                          >
+                            Email
+                          </Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
+                          />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="role" className="text-dashboard-text-primary">Role</Label>
+                          <Label
+                            htmlFor="role"
+                            className="text-dashboard-text-primary"
+                          >
+                            Role
+                          </Label>
                           <Select>
                             <SelectTrigger className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary">
                               <SelectValue placeholder="Select a role" />
                             </SelectTrigger>
                             <SelectContent className="bg-dashboard-card border-dashboard-sidebar">
                               <SelectItem value="admin">Admin</SelectItem>
-                              <SelectItem value="sales-manager">Sales Manager</SelectItem>
-                              <SelectItem value="sales-rep">Sales Rep</SelectItem>
+                              <SelectItem value="sales-manager">
+                                Sales Manager
+                              </SelectItem>
+                              <SelectItem value="sales-rep">
+                                Sales Rep
+                              </SelectItem>
                               <SelectItem value="support">Support</SelectItem>
                             </SelectContent>
                           </Select>
@@ -450,7 +515,10 @@ const Admin = () => {
                       className="pl-10 bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
                     />
                   </div>
-                  <Select value={userFilterRole} onValueChange={setUserFilterRole}>
+                  <Select
+                    value={userFilterRole}
+                    onValueChange={setUserFilterRole}
+                  >
                     <SelectTrigger className="w-48 bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary">
                       <Filter className="w-4 h-4 mr-2" />
                       <SelectValue />
@@ -458,7 +526,9 @@ const Admin = () => {
                     <SelectContent className="bg-dashboard-card border-dashboard-sidebar">
                       <SelectItem value="all">All Roles</SelectItem>
                       <SelectItem value="Admin">Admin</SelectItem>
-                      <SelectItem value="Sales Manager">Sales Manager</SelectItem>
+                      <SelectItem value="Sales Manager">
+                        Sales Manager
+                      </SelectItem>
                       <SelectItem value="Sales Rep">Sales Rep</SelectItem>
                       <SelectItem value="Support">Support</SelectItem>
                     </SelectContent>
@@ -477,21 +547,38 @@ const Admin = () => {
                   <Table>
                     <TableHeader>
                       <TableRow className="border-dashboard-sidebar hover:bg-dashboard-sidebar/50">
-                        <TableHead className="text-dashboard-text-primary">Name</TableHead>
-                        <TableHead className="text-dashboard-text-primary">Email</TableHead>
-                        <TableHead className="text-dashboard-text-primary">Role</TableHead>
-                        <TableHead className="text-dashboard-text-primary">Status</TableHead>
-                        <TableHead className="text-dashboard-text-primary">Last Login</TableHead>
-                        <TableHead className="text-dashboard-text-primary">Actions</TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Name
+                        </TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Email
+                        </TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Role
+                        </TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Status
+                        </TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Last Login
+                        </TableHead>
+                        <TableHead className="text-dashboard-text-primary">
+                          Actions
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredUsers.map((user) => (
-                        <TableRow key={user.id} className="border-dashboard-sidebar hover:bg-dashboard-sidebar/30">
+                        <TableRow
+                          key={user.id}
+                          className="border-dashboard-sidebar hover:bg-dashboard-sidebar/30"
+                        >
                           <TableCell className="text-dashboard-text-primary font-medium">
                             {user.name}
                           </TableCell>
-                          <TableCell className="text-dashboard-text-muted">{user.email}</TableCell>
+                          <TableCell className="text-dashboard-text-muted">
+                            {user.email}
+                          </TableCell>
                           <TableCell>
                             <Badge className={getRoleColor(user.role)}>
                               {user.role}
@@ -502,13 +589,23 @@ const Admin = () => {
                               {user.status}
                             </Badge>
                           </TableCell>
-                          <TableCell className="text-dashboard-text-muted">{user.lastLogin}</TableCell>
+                          <TableCell className="text-dashboard-text-muted">
+                            {user.lastLogin}
+                          </TableCell>
                           <TableCell>
                             <div className="flex gap-2">
-                              <Button size="sm" variant="ghost" className="text-dashboard-text-muted hover:text-dashboard-text-primary">
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                className="text-dashboard-text-muted hover:text-dashboard-text-primary"
+                              >
                                 <Edit className="w-4 h-4" />
                               </Button>
-                              <Button size="sm" variant="ghost" className="text-red-500 hover:text-red-400">
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                className="text-red-500 hover:text-red-400"
+                              >
                                 <Trash2 className="w-4 h-4" />
                               </Button>
                             </div>
@@ -527,7 +624,9 @@ const Admin = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="bg-dashboard-card border-dashboard-sidebar">
                 <CardHeader>
-                  <CardTitle className="text-dashboard-text-primary">User Growth</CardTitle>
+                  <CardTitle className="text-dashboard-text-primary">
+                    User Growth
+                  </CardTitle>
                   <CardDescription className="text-dashboard-text-muted">
                     Monthly active users over time
                   </CardDescription>
@@ -541,7 +640,9 @@ const Admin = () => {
 
               <Card className="bg-dashboard-card border-dashboard-sidebar">
                 <CardHeader>
-                  <CardTitle className="text-dashboard-text-primary">Revenue Trends</CardTitle>
+                  <CardTitle className="text-dashboard-text-primary">
+                    Revenue Trends
+                  </CardTitle>
                   <CardDescription className="text-dashboard-text-muted">
                     Monthly recurring revenue growth
                   </CardDescription>
@@ -567,18 +668,28 @@ const Admin = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">Connection Status</span>
+                    <span className="text-dashboard-text-muted">
+                      Connection Status
+                    </span>
                     <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
                       Connected
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">Storage Used</span>
-                    <span className="text-dashboard-text-primary">2.4 GB / 10 GB</span>
+                    <span className="text-dashboard-text-muted">
+                      Storage Used
+                    </span>
+                    <span className="text-dashboard-text-primary">
+                      2.4 GB / 10 GB
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">Last Backup</span>
-                    <span className="text-dashboard-text-primary">2 hours ago</span>
+                    <span className="text-dashboard-text-muted">
+                      Last Backup
+                    </span>
+                    <span className="text-dashboard-text-primary">
+                      2 hours ago
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -592,18 +703,28 @@ const Admin = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">SSL Certificate</span>
+                    <span className="text-dashboard-text-muted">
+                      SSL Certificate
+                    </span>
                     <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
                       Valid
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">2FA Enabled</span>
-                    <span className="text-dashboard-text-primary">85% of users</span>
+                    <span className="text-dashboard-text-muted">
+                      2FA Enabled
+                    </span>
+                    <span className="text-dashboard-text-primary">
+                      85% of users
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-dashboard-text-muted">Last Security Scan</span>
-                    <span className="text-dashboard-text-primary">Yesterday</span>
+                    <span className="text-dashboard-text-muted">
+                      Last Security Scan
+                    </span>
+                    <span className="text-dashboard-text-primary">
+                      Yesterday
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -615,18 +736,24 @@ const Admin = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="bg-dashboard-card border-dashboard-sidebar">
                 <CardHeader>
-                  <CardTitle className="text-dashboard-text-primary">General Settings</CardTitle>
+                  <CardTitle className="text-dashboard-text-primary">
+                    General Settings
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-dashboard-text-primary">Company Name</Label>
+                    <Label className="text-dashboard-text-primary">
+                      Company Name
+                    </Label>
                     <Input
                       defaultValue="CRMPro"
                       className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-dashboard-text-primary">Time Zone</Label>
+                    <Label className="text-dashboard-text-primary">
+                      Time Zone
+                    </Label>
                     <Select defaultValue="utc">
                       <SelectTrigger className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary">
                         <SelectValue />
@@ -646,18 +773,24 @@ const Admin = () => {
 
               <Card className="bg-dashboard-card border-dashboard-sidebar">
                 <CardHeader>
-                  <CardTitle className="text-dashboard-text-primary">Email Settings</CardTitle>
+                  <CardTitle className="text-dashboard-text-primary">
+                    Email Settings
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-dashboard-text-primary">SMTP Server</Label>
+                    <Label className="text-dashboard-text-primary">
+                      SMTP Server
+                    </Label>
                     <Input
                       defaultValue="smtp.crmpro.com"
                       className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-dashboard-text-primary">From Email</Label>
+                    <Label className="text-dashboard-text-primary">
+                      From Email
+                    </Label>
                     <Input
                       defaultValue="noreply@crmpro.com"
                       className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"

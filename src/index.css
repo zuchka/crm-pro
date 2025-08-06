@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /* Calendar Styles */
-@import './calendar.css';
+@import "./calendar.css";
 
 @layer base {
   /**
@@ -62,16 +62,16 @@
 
     /* Dashboard Colors */
     --dashboard-dark: #171821;
-    --dashboard-card: #21222D;
-    --dashboard-sidebar: #2B2B36;
-    --dashboard-text-primary: #FFFFFF;
-    --dashboard-text-secondary: #E8E8E8;
-    --dashboard-text-muted: #A0A0A0;
-    --dashboard-text-accent: #87888C;
-    --dashboard-accent-teal: #A9DFD8;
-    --dashboard-accent-orange: #FCB859;
-    --dashboard-accent-pink: #F2C8ED;
-    --dashboard-accent-blue: #20AEF3;
+    --dashboard-card: #21222d;
+    --dashboard-sidebar: #2b2b36;
+    --dashboard-text-primary: #ffffff;
+    --dashboard-text-secondary: #e8e8e8;
+    --dashboard-text-muted: #a0a0a0;
+    --dashboard-text-accent: #87888c;
+    --dashboard-accent-teal: #a9dfd8;
+    --dashboard-accent-orange: #fcb859;
+    --dashboard-accent-pink: #f2c8ed;
+    --dashboard-accent-blue: #20aef3;
   }
 
   .dark {
@@ -113,16 +113,16 @@
 
     /* Dashboard Colors */
     --dashboard-dark: #171821;
-    --dashboard-card: #21222D;
-    --dashboard-sidebar: #2B2B36;
-    --dashboard-text-primary: #FFFFFF;
-    --dashboard-text-secondary: #E8E8E8;
-    --dashboard-text-muted: #A0A0A0;
-    --dashboard-text-accent: #87888C;
-    --dashboard-accent-teal: #A9DFD8;
-    --dashboard-accent-orange: #FCB859;
-    --dashboard-accent-pink: #F2C8ED;
-    --dashboard-accent-blue: #20AEF3;
+    --dashboard-card: #21222d;
+    --dashboard-sidebar: #2b2b36;
+    --dashboard-text-primary: #ffffff;
+    --dashboard-text-secondary: #e8e8e8;
+    --dashboard-text-muted: #a0a0a0;
+    --dashboard-text-accent: #87888c;
+    --dashboard-accent-teal: #a9dfd8;
+    --dashboard-accent-orange: #fcb859;
+    --dashboard-accent-pink: #f2c8ed;
+    --dashboard-accent-blue: #20aef3;
   }
 }
 

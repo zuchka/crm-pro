@@ -1,5 +1,10 @@
 import { useState, useMemo } from "react";
-import { Calendar as BigCalendar, momentLocalizer, Event, View } from "react-big-calendar";
+import {
+  Calendar as BigCalendar,
+  momentLocalizer,
+  Event,
+  View,
+} from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,7 +27,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Plus, DollarSign, Calendar as CalendarIcon, Users, Target } from "lucide-react";
+import {
+  Plus,
+  DollarSign,
+  Calendar as CalendarIcon,
+  Users,
+  Target,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const localizer = momentLocalizer(moment);
@@ -32,7 +43,13 @@ interface Deal {
   title: string;
   client: string;
   value: number;
-  stage: "prospect" | "qualification" | "proposal" | "negotiation" | "closed-won" | "closed-lost";
+  stage:
+    | "prospect"
+    | "qualification"
+    | "proposal"
+    | "negotiation"
+    | "closed-won"
+    | "closed-lost";
   assignee: string;
   notes?: string;
 }
@@ -61,7 +78,7 @@ const Calendar = () => {
       assignee: "Sarah Johnson",
     },
     {
-      id: "2", 
+      id: "2",
       title: "Marketing Automation Platform",
       client: "TechStart Inc",
       value: 28000,
@@ -145,25 +162,39 @@ const Calendar = () => {
 
   const getStageColor = (stage: Deal["stage"]) => {
     switch (stage) {
-      case "prospect": return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
-      case "qualification": return "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-300";
-      case "proposal": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300";
-      case "negotiation": return "bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-300";
-      case "closed-won": return "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-300";
-      case "closed-lost": return "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-300";
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+      case "prospect":
+        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+      case "qualification":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-300";
+      case "proposal":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-300";
+      case "negotiation":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-800 dark:text-orange-300";
+      case "closed-won":
+        return "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-300";
+      case "closed-lost":
+        return "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-300";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
     }
   };
 
   const getTypeColor = (type: Milestone["type"]) => {
     switch (type) {
-      case "meeting": return "#20AEF3"; // dashboard-accent-blue
-      case "demo": return "#A9DFD8"; // dashboard-accent-teal
-      case "proposal": return "#FCB859"; // dashboard-accent-orange
-      case "follow-up": return "#F2C8ED"; // dashboard-accent-pink
-      case "deadline": return "#EF4444"; // bright red for urgency
-      case "contract": return "#10B981"; // bright green for success
-      default: return "#87888C"; // dashboard-text-accent
+      case "meeting":
+        return "#20AEF3"; // dashboard-accent-blue
+      case "demo":
+        return "#A9DFD8"; // dashboard-accent-teal
+      case "proposal":
+        return "#FCB859"; // dashboard-accent-orange
+      case "follow-up":
+        return "#F2C8ED"; // dashboard-accent-pink
+      case "deadline":
+        return "#EF4444"; // bright red for urgency
+      case "contract":
+        return "#10B981"; // bright green for success
+      default:
+        return "#87888C"; // dashboard-text-accent
     }
   };
 
@@ -174,7 +205,9 @@ const Calendar = () => {
         backgroundColor: bgColor,
         borderRadius: "6px",
         opacity: 0.95,
-        color: ["#A9DFD8", "#FCB859", "#F2C8ED"].includes(bgColor) ? "#1a1a1a" : "white",
+        color: ["#A9DFD8", "#FCB859", "#F2C8ED"].includes(bgColor)
+          ? "#1a1a1a"
+          : "white",
         border: `2px solid ${bgColor}`,
         display: "block",
         fontWeight: "600",
@@ -186,7 +219,7 @@ const Calendar = () => {
   };
 
   const totalPipelineValue = deals.reduce((sum, deal) => sum + deal.value, 0);
-  const activeMilestones = milestones.filter(m => m.start >= new Date());
+  const activeMilestones = milestones.filter((m) => m.start >= new Date());
 
   return (
     <div className="space-y-6">
@@ -218,11 +251,13 @@ const Calendar = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-dashboard-text-primary">
-              {activeMilestones.filter(m => {
-                const weekFromNow = new Date();
-                weekFromNow.setDate(weekFromNow.getDate() + 7);
-                return m.start <= weekFromNow;
-              }).length}
+              {
+                activeMilestones.filter((m) => {
+                  const weekFromNow = new Date();
+                  weekFromNow.setDate(weekFromNow.getDate() + 7);
+                  return m.start <= weekFromNow;
+                }).length
+              }
             </div>
             <p className="text-xs text-dashboard-text-muted">
               upcoming milestones
@@ -239,11 +274,9 @@ const Calendar = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-dashboard-text-primary">
-              {deals.filter(d => !d.stage.startsWith("closed")).length}
+              {deals.filter((d) => !d.stage.startsWith("closed")).length}
             </div>
-            <p className="text-xs text-dashboard-text-muted">
-              in progress
-            </p>
+            <p className="text-xs text-dashboard-text-muted">in progress</p>
           </CardContent>
         </Card>
 
@@ -256,11 +289,9 @@ const Calendar = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-dashboard-text-primary">
-              {new Set(deals.map(d => d.assignee)).size}
+              {new Set(deals.map((d) => d.assignee)).size}
             </div>
-            <p className="text-xs text-dashboard-text-muted">
-              working deals
-            </p>
+            <p className="text-xs text-dashboard-text-muted">working deals</p>
           </CardContent>
         </Card>
       </div>
@@ -270,7 +301,9 @@ const Calendar = () => {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-dashboard-text-primary">Deal Calendar</CardTitle>
+              <CardTitle className="text-dashboard-text-primary">
+                Deal Calendar
+              </CardTitle>
               <p className="text-sm text-dashboard-text-muted mt-1">
                 Track deal milestones and important dates
               </p>
@@ -284,7 +317,9 @@ const Calendar = () => {
               </DialogTrigger>
               <DialogContent className="bg-dashboard-card border-dashboard-sidebar max-w-md">
                 <DialogHeader>
-                  <DialogTitle className="text-dashboard-text-primary">Add New Milestone</DialogTitle>
+                  <DialogTitle className="text-dashboard-text-primary">
+                    Add New Milestone
+                  </DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4">
                   <div className="space-y-2">
@@ -324,16 +359,28 @@ const Calendar = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-dashboard-text-primary">Date</Label>
-                      <Input type="date" className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
+                      <Label className="text-dashboard-text-primary">
+                        Date
+                      </Label>
+                      <Input
+                        type="date"
+                        className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
+                      />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-dashboard-text-primary">Time</Label>
-                      <Input type="time" className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
+                      <Label className="text-dashboard-text-primary">
+                        Time
+                      </Label>
+                      <Input
+                        type="time"
+                        className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary"
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-dashboard-text-primary">Description</Label>
+                    <Label className="text-dashboard-text-primary">
+                      Description
+                    </Label>
                     <Textarea className="bg-dashboard-dark border-dashboard-sidebar text-dashboard-text-primary" />
                   </div>
                   <div className="flex justify-end gap-2">
@@ -356,12 +403,14 @@ const Calendar = () => {
         <CardContent>
           <div
             className="calendar-container"
-            style={{
-              height: "600px",
-              '--rbc-color': 'rgb(169, 223, 216)',
-              '--rbc-bg-color': 'var(--dashboard-card)',
-              '--rbc-border-color': 'var(--dashboard-sidebar)',
-            } as React.CSSProperties}
+            style={
+              {
+                height: "600px",
+                "--rbc-color": "rgb(169, 223, 216)",
+                "--rbc-bg-color": "var(--dashboard-card)",
+                "--rbc-border-color": "var(--dashboard-sidebar)",
+              } as React.CSSProperties
+            }
           >
             <BigCalendar
               localizer={localizer}
@@ -377,7 +426,7 @@ const Calendar = () => {
               popup
               style={{
                 height: "100%",
-                color: 'rgb(169, 223, 216)',
+                color: "rgb(169, 223, 216)",
               }}
               formats={{
                 monthHeaderFormat: "MMMM YYYY",
@@ -393,35 +442,51 @@ const Calendar = () => {
       {/* Deal Overview */}
       <Card className="bg-dashboard-card border-dashboard-sidebar">
         <CardHeader>
-          <CardTitle className="text-dashboard-text-primary">Active Deals</CardTitle>
+          <CardTitle className="text-dashboard-text-primary">
+            Active Deals
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {deals.filter(d => !d.stage.startsWith("closed")).map((deal) => (
-              <div key={deal.id} className="flex items-center justify-between p-4 bg-dashboard-sidebar/30 rounded-lg">
-                <div className="flex-1">
-                  <h4 className="font-medium text-dashboard-text-primary">{deal.title}</h4>
-                  <p className="text-sm text-dashboard-text-muted">{deal.client}</p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="text-right">
-                    <p className="font-medium text-dashboard-text-primary">
-                      ${deal.value.toLocaleString()}
+            {deals
+              .filter((d) => !d.stage.startsWith("closed"))
+              .map((deal) => (
+                <div
+                  key={deal.id}
+                  className="flex items-center justify-between p-4 bg-dashboard-sidebar/30 rounded-lg"
+                >
+                  <div className="flex-1">
+                    <h4 className="font-medium text-dashboard-text-primary">
+                      {deal.title}
+                    </h4>
+                    <p className="text-sm text-dashboard-text-muted">
+                      {deal.client}
                     </p>
-                    <p className="text-sm text-dashboard-text-muted">{deal.assignee}</p>
                   </div>
-                  <Badge className={getStageColor(deal.stage)}>
-                    {deal.stage.replace("-", " ")}
-                  </Badge>
+                  <div className="flex items-center gap-4">
+                    <div className="text-right">
+                      <p className="font-medium text-dashboard-text-primary">
+                        ${deal.value.toLocaleString()}
+                      </p>
+                      <p className="text-sm text-dashboard-text-muted">
+                        {deal.assignee}
+                      </p>
+                    </div>
+                    <Badge className={getStageColor(deal.stage)}>
+                      {deal.stage.replace("-", " ")}
+                    </Badge>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </CardContent>
       </Card>
 
       {/* Event Details Dialog */}
-      <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
+      <Dialog
+        open={!!selectedEvent}
+        onOpenChange={() => setSelectedEvent(null)}
+      >
         <DialogContent className="bg-dashboard-card border-dashboard-sidebar">
           <DialogHeader>
             <DialogTitle className="text-dashboard-text-primary">
@@ -446,16 +511,22 @@ const Calendar = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label className="text-dashboard-text-muted">Date & Time</Label>
+                  <Label className="text-dashboard-text-muted">
+                    Date & Time
+                  </Label>
                   <p className="text-dashboard-text-primary font-medium">
-                    {moment(selectedEvent.start).format("MMM DD, YYYY at h:mm A")}
+                    {moment(selectedEvent.start).format(
+                      "MMM DD, YYYY at h:mm A",
+                    )}
                   </p>
                 </div>
                 <div>
                   <Label className="text-dashboard-text-muted">Type</Label>
-                  <Badge 
-                    className="text-white" 
-                    style={{ backgroundColor: getTypeColor(selectedEvent.type) }}
+                  <Badge
+                    className="text-white"
+                    style={{
+                      backgroundColor: getTypeColor(selectedEvent.type),
+                    }}
                   >
                     {selectedEvent.type}
                   </Badge>
@@ -475,7 +546,9 @@ const Calendar = () => {
               </div>
               {selectedEvent.description && (
                 <div>
-                  <Label className="text-dashboard-text-muted">Description</Label>
+                  <Label className="text-dashboard-text-muted">
+                    Description
+                  </Label>
                   <p className="text-dashboard-text-primary">
                     {selectedEvent.description}
                   </p>
