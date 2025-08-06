@@ -416,8 +416,17 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-3">
-                {timeSlots.map((time) => (
+              {!selectedDate ? (
+                <div className="text-center py-8 text-dashboard-dark/60">
+                  Please select a date first to see available times
+                </div>
+              ) : availableTimes.length === 0 ? (
+                <div className="text-center py-8 text-dashboard-dark/60">
+                  Loading available times...
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-3">
+                  {availableTimes.map((time) => (
                   <Button
                     key={time}
                     variant={selectedTime === time ? "default" : "outline"}
@@ -432,8 +441,9 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
                     {selectedTime === time && <Check className="w-4 h-4 mr-2" />}
                     {time}
                   </Button>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
 
