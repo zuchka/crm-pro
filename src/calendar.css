@@ -1,17 +1,26 @@
-/* React Big Calendar Custom Styles for Dark Theme */
+/* React Big Calendar Dark Theme Customization */
+
+/* Override the base calendar styles */
 .rbc-calendar {
+  font-family: inherit;
   background-color: transparent;
-  color: var(--dashboard-accent-teal);
+  color: rgb(169, 223, 216);
 }
 
+/* Headers and structure */
 .rbc-header {
   background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal);
   border-bottom: 1px solid var(--dashboard-sidebar);
   padding: 8px 6px;
   font-weight: 600;
 }
 
+.rbc-header,
+.rbc-header * {
+  color: rgb(169, 223, 216) !important;
+}
+
+/* Calendar grid */
 .rbc-month-view,
 .rbc-time-view {
   background-color: transparent;
@@ -38,33 +47,9 @@
 
 .rbc-today {
   background-color: rgba(169, 223, 216, 0.2) !important;
-  border: 2px solid var(--dashboard-accent-teal) !important;
 }
 
-.rbc-date-cell {
-  color: var(--dashboard-accent-teal);
-  padding: 6px 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.rbc-off-range {
-  color: var(--dashboard-text-muted);
-  opacity: 0.5;
-}
-
-.rbc-date-cell.rbc-now {
-  color: var(--dashboard-accent-teal);
-  font-weight: 700;
-  background-color: rgba(169, 223, 216, 0.1);
-  border-radius: 4px;
-}
-
-.rbc-current-time-indicator {
-  background-color: var(--dashboard-accent-teal);
-}
-
-/* Toolbar Styles */
+/* Toolbar - most important for fixing the dark text issue */
 .rbc-toolbar {
   background-color: transparent;
   border-bottom: 1px solid var(--dashboard-sidebar);
@@ -72,10 +57,20 @@
   margin-bottom: 0;
 }
 
-.rbc-toolbar button {
-  background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal) !important;
-  border: 1px solid var(--dashboard-accent-teal);
+.rbc-toolbar-label {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.rbc-toolbar-label,
+.rbc-toolbar-label * {
+  color: rgb(169, 223, 216) !important;
+}
+
+/* Navigation buttons - this is the key fix */
+.rbc-toolbar .rbc-btn-group button {
+  background-color: var(--dashboard-sidebar) !important;
+  border: 1px solid var(--dashboard-accent-teal) !important;
   padding: 6px 12px;
   border-radius: 4px;
   margin: 0 2px;
@@ -83,29 +78,40 @@
   font-weight: 500;
 }
 
-.rbc-toolbar button:hover {
-  background-color: var(--dashboard-accent-teal);
-  color: var(--dashboard-dark);
+.rbc-toolbar .rbc-btn-group button,
+.rbc-toolbar .rbc-btn-group button *,
+.rbc-toolbar button,
+.rbc-toolbar button * {
+  color: rgb(169, 223, 216) !important;
 }
 
-.rbc-toolbar button.rbc-active {
-  background-color: var(--dashboard-accent-teal);
-  color: var(--dashboard-dark);
-  border-color: var(--dashboard-accent-teal);
+.rbc-toolbar .rbc-btn-group button:hover {
+  background-color: var(--dashboard-accent-teal) !important;
+  color: var(--dashboard-dark) !important;
 }
 
-.rbc-toolbar button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--dashboard-accent-teal);
+.rbc-toolbar .rbc-btn-group button.rbc-active {
+  background-color: var(--dashboard-accent-teal) !important;
+  color: var(--dashboard-dark) !important;
+  border-color: var(--dashboard-accent-teal) !important;
 }
 
-.rbc-toolbar-label {
-  color: var(--dashboard-accent-teal);
-  font-weight: 700;
-  font-size: 18px;
+/* Date cells */
+.rbc-date-cell,
+.rbc-date-cell *,
+.rbc-button-link,
+.rbc-button-link * {
+  color: rgb(169, 223, 216) !important;
+  font-weight: 600;
 }
 
-/* Event Styles */
+.rbc-off-range,
+.rbc-off-range * {
+  color: var(--dashboard-text-muted) !important;
+  opacity: 0.7;
+}
+
+/* Event styles */
 .rbc-event {
   border-radius: 6px;
   padding: 3px 8px;
@@ -132,106 +138,20 @@
   transform: scale(1.02);
 }
 
-/* Time Grid Styles */
-.rbc-time-header {
-  background-color: var(--dashboard-sidebar);
-  border-bottom: 1px solid var(--dashboard-sidebar);
+/* Nuclear option - force teal color on ALL elements */
+.calendar-container *,
+.calendar-container button,
+.calendar-container span,
+.calendar-container div {
+  color: rgb(169, 223, 216) !important;
 }
 
-.rbc-time-content {
-  border-left: 1px solid var(--dashboard-sidebar);
+/* Override any inline styles */
+.calendar-container [style*="color"] {
+  color: rgb(169, 223, 216) !important;
 }
 
-.rbc-time-gutter {
-  background-color: var(--dashboard-sidebar);
-  border-right: 1px solid var(--dashboard-sidebar);
-}
-
-.rbc-timeslot-group {
-  border-bottom: 1px solid var(--dashboard-sidebar);
-}
-
-.rbc-time-slot {
-  color: var(--dashboard-accent-teal);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* Week/Day View Styles */
-.rbc-time-view .rbc-time-header {
-  border-bottom: 1px solid var(--dashboard-sidebar);
-}
-
-.rbc-time-view .rbc-time-content > * + * > * {
-  border-left: 1px solid var(--dashboard-sidebar);
-}
-
-.rbc-day-slot .rbc-time-slot {
-  border-top: 1px solid var(--dashboard-sidebar);
-}
-
-/* Agenda View Styles */
-.rbc-agenda-view {
-  background-color: transparent;
-}
-
-.rbc-agenda-view table {
-  border: 1px solid var(--dashboard-sidebar);
-}
-
-.rbc-agenda-view tbody > tr > td {
-  border-top: 1px solid var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal);
-  padding: 8px;
-}
-
-.rbc-agenda-date-cell {
-  background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal);
-  font-weight: 600;
-}
-
-.rbc-agenda-time-cell {
-  color: var(--dashboard-accent-teal);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* Popup Styles */
-.rbc-overlay {
-  background-color: var(--dashboard-card);
-  border: 1px solid var(--dashboard-accent-teal);
-  border-radius: 6px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  color: var(--dashboard-accent-teal);
-}
-
-.rbc-overlay-header {
-  background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal);
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--dashboard-sidebar);
-  font-weight: 600;
-}
-
-/* Show More Link */
-.rbc-show-more {
-  color: var(--dashboard-accent-teal);
-  font-weight: 500;
-}
-
-.rbc-show-more:hover {
-  color: var(--dashboard-accent-teal);
-  text-decoration: underline;
-}
-
-/* Accessibility */
-.rbc-calendar:focus {
-  outline: 2px solid var(--dashboard-accent-teal);
-  outline-offset: 2px;
-}
-
-/* Custom Calendar Container */
+/* Calendar container */
 .calendar-container {
   background-color: transparent;
   border-radius: 6px;
@@ -240,102 +160,4 @@
 
 .calendar-container .rbc-calendar {
   font-family: inherit;
-}
-
-/* Force teal color on ALL calendar text elements */
-.rbc-calendar,
-.rbc-calendar *,
-.rbc-calendar span,
-.rbc-calendar button,
-.rbc-calendar .rbc-button-link,
-.rbc-calendar .rbc-date-cell,
-.rbc-calendar .rbc-header,
-.rbc-calendar .rbc-header span,
-.rbc-calendar .rbc-toolbar-label,
-.rbc-calendar .rbc-off-range,
-.rbc-calendar .rbc-current,
-.rbc-calendar .rbc-now {
-  color: var(--dashboard-accent-teal) !important;
-}
-
-.rbc-calendar .rbc-button-link {
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.rbc-calendar .rbc-button-link:hover {
-  color: var(--dashboard-accent-teal) !important;
-  text-decoration: underline;
-}
-
-.rbc-calendar .rbc-off-range,
-.rbc-calendar .rbc-off-range .rbc-button-link {
-  color: var(--dashboard-text-muted) !important;
-  opacity: 0.7;
-}
-
-/* Very specific overrides for stubborn elements */
-.calendar-container .rbc-calendar .rbc-month-view .rbc-month-row .rbc-date-cell .rbc-button-link,
-.calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label,
-.calendar-container .rbc-calendar .rbc-toolbar button,
-.calendar-container .rbc-calendar .rbc-header span,
-.calendar-container .rbc-calendar .rbc-row-content .rbc-date-cell,
-.calendar-container .rbc-calendar span {
-  color: var(--dashboard-accent-teal) !important;
-  font-weight: 600;
-}
-
-/* Navigation buttons specifically */
-.calendar-container .rbc-toolbar button span {
-  color: var(--dashboard-accent-teal) !important;
-}
-
-/* Nuclear option - override ALL possible text elements with maximum specificity */
-.calendar-container .rbc-calendar * {
-  color: rgb(169, 223, 216) !important;
-}
-
-/* Specific overrides for all button texts and navigation */
-.rbc-btn-group button,
-.rbc-btn-group button *,
-.rbc-toolbar button,
-.rbc-toolbar button *,
-.rbc-toolbar span,
-.rbc-toolbar span *,
-.rbc-button-link,
-.rbc-button-link *,
-.rbc-date-cell,
-.rbc-date-cell *,
-.rbc-header,
-.rbc-header *,
-div[class*="rbc"] *,
-button[class*="rbc"],
-button[class*="rbc"] *,
-span[class*="rbc"],
-span[class*="rbc"] * {
-  color: rgb(169, 223, 216) !important;
-}
-
-/* Override inline styles with maximum specificity */
-.calendar-container button[style*="color"],
-.calendar-container span[style*="color"],
-.calendar-container div[style*="color"] {
-  color: rgb(169, 223, 216) !important;
-}
-
-/* Target the specific elements mentioned in the diff */
-.calendar-container button[style*="color: rgb(55, 58, 60)"],
-.calendar-container span[style*="color: rgb(55, 58, 60)"],
-.calendar-container *[style*="color: rgb(55, 58, 60)"] {
-  color: rgb(169, 223, 216) !important;
-}
-
-/* Catch-all for any dark text colors */
-.calendar-container *[style*="color: rgb(0,"],
-.calendar-container *[style*="color: rgb(55,"],
-.calendar-container *[style*="color: rgb(33,"],
-.calendar-container *[style*="color: #000"],
-.calendar-container *[style*="color: #333"],
-.calendar-container *[style*="color: black"] {
-  color: rgb(169, 223, 216) !important;
 }
