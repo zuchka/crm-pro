@@ -600,6 +600,23 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Schedule Demo Dialog */}
+      <Dialog open={showScheduleDialog} onOpenChange={setShowScheduleDialog}>
+        <DialogContent className="bg-dashboard-accent-teal border-dashboard-accent-teal">
+          <DialogHeader>
+            <DialogTitle className="text-dashboard-dark text-center">
+              Schedule Demo
+            </DialogTitle>
+          </DialogHeader>
+          {/* Empty for now - content will be added later */}
+          <div className="min-h-[200px] flex items-center justify-center">
+            <p className="text-dashboard-dark/70">
+              Dialog content will be added here
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
