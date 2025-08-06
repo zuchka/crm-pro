@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Calendar Styles */
+@import "./calendar.css";
+
 @layer base {
   /**
    * Tailwind CSS theme
@@ -56,6 +59,19 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dashboard Colors */
+    --dashboard-dark: #171821;
+    --dashboard-card: #21222d;
+    --dashboard-sidebar: #2b2b36;
+    --dashboard-text-primary: #ffffff;
+    --dashboard-text-secondary: #e8e8e8;
+    --dashboard-text-muted: #a0a0a0;
+    --dashboard-text-accent: #87888c;
+    --dashboard-accent-teal: #a9dfd8;
+    --dashboard-accent-orange: #fcb859;
+    --dashboard-accent-pink: #f2c8ed;
+    --dashboard-accent-blue: #20aef3;
   }
 
   .dark {
@@ -94,6 +110,19 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dashboard Colors */
+    --dashboard-dark: #171821;
+    --dashboard-card: #21222d;
+    --dashboard-sidebar: #2b2b36;
+    --dashboard-text-primary: #ffffff;
+    --dashboard-text-secondary: #e8e8e8;
+    --dashboard-text-muted: #a0a0a0;
+    --dashboard-text-accent: #87888c;
+    --dashboard-accent-teal: #a9dfd8;
+    --dashboard-accent-orange: #fcb859;
+    --dashboard-accent-pink: #f2c8ed;
+    --dashboard-accent-blue: #20aef3;
   }
 }
 
