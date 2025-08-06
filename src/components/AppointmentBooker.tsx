@@ -7,16 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -30,8 +22,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CalendarIcon, Clock, User, Mail, Phone } from "lucide-react";
+import { CalendarIcon, Clock, User, Mail, Phone, ArrowRight, Check } from "lucide-react";
 import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -64,10 +57,10 @@ interface AppointmentBookerProps {
 }
 
 const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    undefined
-  );
-  const [step, setStep] = useState<"date" | "details">("date");
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedTime, setSelectedTime] = useState<string>("");
+  const [selectedMeetingType, setSelectedMeetingType] = useState<string>("");
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -84,7 +77,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
   // Available time slots
   const timeSlots = [
     "09:00 AM",
-    "10:00 AM",
+    "10:00 AM", 
     "11:00 AM",
     "01:00 PM",
     "02:00 PM",
@@ -94,22 +87,34 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
 
   // Meeting types
   const meetingTypes = [
-    { value: "demo", label: "Product Demo", duration: "30 min" },
-    { value: "consultation", label: "Sales Consultation", duration: "45 min" },
-    { value: "implementation", label: "Implementation Call", duration: "60 min" },
+    { value: "demo", label: "Product Demo", duration: "30 min", description: "See CRMPro in action" },
+    { value: "consultation", label: "Sales Consultation", duration: "45 min", description: "Discuss your specific needs" },
+    { value: "implementation", label: "Implementation Call", duration: "60 min", description: "Plan your CRM setup" },
   ];
 
   const handleDateSelect = (date: Date | undefined) => {
     setSelectedDate(date);
     form.setValue("date", date as Date);
-    if (date) {
-      setStep("details");
+  };
+
+  const handleTimeSelect = (time: string) => {
+    setSelectedTime(time);
+    form.setValue("time", time);
+  };
+
+  const handleMeetingTypeSelect = (type: string) => {
+    setSelectedMeetingType(type);
+    form.setValue("meetingType", type);
+  };
+
+  const handleContinue = () => {
+    if (selectedDate && selectedTime && selectedMeetingType) {
+      setShowContactForm(true);
     }
   };
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Appointment booked:", values);
-    // Here you would typically send the data to your backend
     alert(
       `Appointment scheduled for ${format(values.date, "PPP")} at ${
         values.time
@@ -120,7 +125,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
 
   const isWeekend = (date: Date) => {
     const day = date.getDay();
-    return day === 0 || day === 6; // Sunday or Saturday
+    return day === 0 || day === 6;
   };
 
   const isPastDate = (date: Date) => {
@@ -129,283 +134,345 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
     return date < today;
   };
 
+  const canContinue = selectedDate && selectedTime && selectedMeetingType;
+
+  if (showContactForm) {
+    return (
+      <div className="w-full max-w-4xl mx-auto space-y-6">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-dashboard-dark mb-4">
+            Almost there! Just a few details
+          </h2>
+          <div className="flex items-center justify-center gap-4 text-dashboard-dark/70">
+            <div className="flex items-center gap-2">
+              <CalendarIcon className="h-4 w-4" />
+              <span>{selectedDate && format(selectedDate, "PPP")}</span>
+            </div>
+            <div className="w-1 h-1 bg-dashboard-dark/30 rounded-full"></div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              <span>{selectedTime}</span>
+            </div>
+            <div className="w-1 h-1 bg-dashboard-dark/30 rounded-full"></div>
+            <span>{meetingTypes.find(m => m.value === selectedMeetingType)?.label}</span>
+          </div>
+        </div>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-dashboard-dark text-base font-medium">
+                      First Name *
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="John"
+                        {...field}
+                        className="bg-white/90 border-dashboard-dark/20 h-12 text-base"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-dashboard-dark text-base font-medium">
+                      Last Name *
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Doe"
+                        {...field}
+                        className="bg-white/90 border-dashboard-dark/20 h-12 text-base"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-dashboard-dark text-base font-medium flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      Email Address *
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="john@company.com"
+                        type="email"
+                        {...field}
+                        className="bg-white/90 border-dashboard-dark/20 h-12 text-base"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-dashboard-dark text-base font-medium flex items-center gap-2">
+                      <Phone className="h-4 w-4" />
+                      Phone Number *
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="(555) 123-4567"
+                        {...field}
+                        className="bg-white/90 border-dashboard-dark/20 h-12 text-base"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="company"
+                render={({ field }) => (
+                  <FormItem className="md:col-span-2">
+                    <FormLabel className="text-dashboard-dark text-base font-medium">
+                      Company (Optional)
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Acme Corp"
+                        {...field}
+                        className="bg-white/90 border-dashboard-dark/20 h-12 text-base"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="notes"
+                render={({ field }) => (
+                  <FormItem className="md:col-span-2">
+                    <FormLabel className="text-dashboard-dark text-base font-medium">
+                      What would you like to discuss? (Optional)
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us about your goals, team size, or any specific questions..."
+                        className="bg-white/90 border-dashboard-dark/20 min-h-[120px] text-base"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="flex justify-between pt-6 border-t border-dashboard-dark/20">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowContactForm(false)}
+                className="border-dashboard-dark/30 text-dashboard-dark hover:bg-dashboard-dark/10 h-12 px-6"
+              >
+                Back
+              </Button>
+
+              <Button
+                type="submit"
+                className="bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark/90 h-12 px-8"
+              >
+                Schedule Demo
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      {step === "date" ? (
-        <Card className="border-0 shadow-none bg-transparent">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl text-dashboard-dark flex items-center justify-center gap-2">
-              <CalendarIcon className="h-6 w-6" />
-              Select a Date
+    <div className="w-full max-w-6xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-dashboard-dark mb-2">
+          Schedule Your Demo
+        </h2>
+        <p className="text-dashboard-dark/70 text-lg">
+          Choose your preferred date, time, and meeting type
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Left Side - Calendar */}
+        <Card className="border-dashboard-dark/20 bg-white/95 shadow-lg">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl text-dashboard-dark flex items-center gap-2">
+              <CalendarIcon className="h-5 w-5" />
+              Select Date
             </CardTitle>
-            <CardDescription className="text-dashboard-dark/70">
-              Choose your preferred date for the demo
+            <CardDescription className="text-dashboard-dark/60">
+              Choose any weekday for your demo
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center">
+          <CardContent className="flex justify-center pb-6">
             <Calendar
               mode="single"
               selected={selectedDate}
               onSelect={handleDateSelect}
               disabled={(date) => isWeekend(date) || isPastDate(date)}
-              className="rounded-md border-dashboard-dark/20 bg-white/90"
+              className="scale-110"
               classNames={{
-                day_selected: "bg-dashboard-dark text-dashboard-accent-teal",
-                day_today: "bg-dashboard-accent-teal/20 text-dashboard-dark",
-                day_disabled: "text-dashboard-dark/30",
+                months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+                month: "space-y-4",
+                caption: "flex justify-center pt-1 relative items-center",
+                caption_label: "text-lg font-semibold text-dashboard-dark",
+                nav: "space-x-1 flex items-center",
+                nav_button: cn(
+                  "h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100 border border-dashboard-dark/20 rounded-md"
+                ),
+                nav_button_previous: "absolute left-1",
+                nav_button_next: "absolute right-1",
+                table: "w-full border-collapse space-y-1",
+                head_row: "flex",
+                head_cell: "text-dashboard-dark/60 rounded-md w-12 font-medium text-sm",
+                row: "flex w-full mt-2",
+                cell: "h-12 w-12 text-center text-sm p-0 relative hover:bg-dashboard-dark/5 rounded-md transition-colors",
+                day: "h-12 w-12 p-0 font-normal aria-selected:opacity-100 rounded-md hover:bg-dashboard-dark/10 transition-colors",
+                day_range_end: "day-range-end",
+                day_selected: "bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark hover:text-dashboard-accent-teal font-semibold",
+                day_today: "bg-dashboard-accent-teal/20 text-dashboard-dark font-semibold",
+                day_outside: "text-dashboard-dark/30 opacity-50",
+                day_disabled: "text-dashboard-dark/20 opacity-30",
+                day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+                day_hidden: "invisible",
               }}
             />
           </CardContent>
         </Card>
-      ) : (
+
+        {/* Right Side - Time & Meeting Type */}
         <div className="space-y-6">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-dashboard-dark mb-2">
-              Complete Your Booking
-            </h2>
-            <div className="flex items-center justify-center gap-2 text-dashboard-dark/70">
-              <CalendarIcon className="h-4 w-4" />
-              <span>{selectedDate && format(selectedDate, "PPP")}</span>
-            </div>
-          </div>
+          {/* Time Selection */}
+          <Card className="border-dashboard-dark/20 bg-white/95 shadow-lg">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl text-dashboard-dark flex items-center gap-2">
+                <Clock className="h-5 w-5" />
+                Select Time
+              </CardTitle>
+              <CardDescription className="text-dashboard-dark/60">
+                All times shown in your local timezone
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-3">
+                {timeSlots.map((time) => (
+                  <Button
+                    key={time}
+                    variant={selectedTime === time ? "default" : "outline"}
+                    onClick={() => handleTimeSelect(time)}
+                    className={cn(
+                      "h-12 text-base font-medium transition-all",
+                      selectedTime === time
+                        ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md"
+                        : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
+                    )}
+                  >
+                    {selectedTime === time && <Check className="w-4 h-4 mr-2" />}
+                    {time}
+                  </Button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Left Column - Personal Info */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-dashboard-dark flex items-center gap-2">
-                    <User className="h-5 w-5" />
-                    Contact Information
-                  </h3>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-dashboard-dark">
-                            First Name
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="John"
-                              {...field}
-                              className="bg-white/90 border-dashboard-dark/20"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
+          {/* Meeting Type Selection */}
+          <Card className="border-dashboard-dark/20 bg-white/95 shadow-lg">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl text-dashboard-dark flex items-center gap-2">
+                <User className="h-5 w-5" />
+                Meeting Type
+              </CardTitle>
+              <CardDescription className="text-dashboard-dark/60">
+                Choose what best fits your needs
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {meetingTypes.map((type) => (
+                <Button
+                  key={type.value}
+                  variant={selectedMeetingType === type.value ? "default" : "outline"}
+                  onClick={() => handleMeetingTypeSelect(type.value)}
+                  className={cn(
+                    "w-full h-auto p-4 text-left justify-start transition-all",
+                    selectedMeetingType === type.value
+                      ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md border-dashboard-dark"
+                      : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
+                  )}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center gap-3">
+                      {selectedMeetingType === type.value && <Check className="w-4 h-4" />}
+                      <div>
+                        <div className="font-semibold text-base">{type.label}</div>
+                        <div className={cn(
+                          "text-sm",
+                          selectedMeetingType === type.value ? "text-dashboard-accent-teal/80" : "text-dashboard-dark/60"
+                        )}>
+                          {type.description}
+                        </div>
+                      </div>
+                    </div>
+                    <Badge 
+                      variant="secondary" 
+                      className={cn(
+                        "text-xs",
+                        selectedMeetingType === type.value ? "bg-dashboard-accent-teal/20 text-dashboard-accent-teal" : ""
                       )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-dashboard-dark">
-                            Last Name
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Doe"
-                              {...field}
-                              className="bg-white/90 border-dashboard-dark/20"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    >
+                      {type.duration}
+                    </Badge>
                   </div>
-
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark flex items-center gap-2">
-                          <Mail className="h-4 w-4" />
-                          Email
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="john@example.com"
-                            type="email"
-                            {...field}
-                            className="bg-white/90 border-dashboard-dark/20"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark flex items-center gap-2">
-                          <Phone className="h-4 w-4" />
-                          Phone
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="(555) 123-4567"
-                            {...field}
-                            className="bg-white/90 border-dashboard-dark/20"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark">
-                          Company (Optional)
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Acme Corp"
-                            {...field}
-                            className="bg-white/90 border-dashboard-dark/20"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                {/* Right Column - Meeting Details */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-dashboard-dark flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
-                    Meeting Details
-                  </h3>
-
-                  <FormField
-                    control={form.control}
-                    name="meetingType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark">
-                          Meeting Type
-                        </FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="bg-white/90 border-dashboard-dark/20">
-                              <SelectValue placeholder="Select meeting type" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {meetingTypes.map((type) => (
-                              <SelectItem key={type.value} value={type.value}>
-                                <div className="flex items-center justify-between w-full">
-                                  <span>{type.label}</span>
-                                  <Badge
-                                    variant="secondary"
-                                    className="ml-2 text-xs"
-                                  >
-                                    {type.duration}
-                                  </Badge>
-                                </div>
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="time"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark">
-                          Preferred Time
-                        </FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="bg-white/90 border-dashboard-dark/20">
-                              <SelectValue placeholder="Select time slot" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {timeSlots.map((time) => (
-                              <SelectItem key={time} value={time}>
-                                {time}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormDescription className="text-dashboard-dark/60">
-                          All times are in your local timezone
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="notes"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-dashboard-dark">
-                          Additional Notes (Optional)
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Tell us about your goals, team size, or any specific questions..."
-                            className="bg-white/90 border-dashboard-dark/20 min-h-[100px]"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-between pt-6 border-t border-dashboard-dark/20">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setStep("date")}
-                  className="border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/10"
-                >
-                  Back to Calendar
                 </Button>
-
-                <Button
-                  type="submit"
-                  className="bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark/90"
-                >
-                  Schedule Demo
-                </Button>
-              </div>
-            </form>
-          </Form>
+              ))}
+            </CardContent>
+          </Card>
         </div>
-      )}
+      </div>
+
+      {/* Continue Button */}
+      <div className="mt-8 flex justify-center">
+        <Button
+          onClick={handleContinue}
+          disabled={!canContinue}
+          className={cn(
+            "h-14 px-12 text-lg font-semibold transition-all",
+            canContinue
+              ? "bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark/90 shadow-lg"
+              : "bg-dashboard-dark/40 text-dashboard-dark/60 cursor-not-allowed"
+          )}
+        >
+          Continue
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </Button>
+      </div>
     </div>
   );
 };
