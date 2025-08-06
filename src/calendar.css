@@ -74,7 +74,7 @@
 
 .rbc-toolbar button {
   background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-accent-teal);
+  color: var(--dashboard-accent-teal) !important;
   border: 1px solid var(--dashboard-accent-teal);
   padding: 6px 12px;
   border-radius: 4px;
