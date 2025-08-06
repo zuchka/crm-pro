@@ -23,7 +23,7 @@
 }
 
 .rbc-day-bg {
-  background-color: transparent;
+  background-color: var(--dashboard-card);
   border-right: 1px solid var(--dashboard-sidebar);
 }
 
@@ -33,10 +33,12 @@
 
 .rbc-off-range-bg {
   background-color: var(--dashboard-dark);
+  opacity: 0.5;
 }
 
 .rbc-today {
-  background-color: rgba(169, 223, 216, 0.1) !important;
+  background-color: rgba(169, 223, 216, 0.2) !important;
+  border: 2px solid var(--dashboard-accent-teal) !important;
 }
 
 .rbc-date-cell {
