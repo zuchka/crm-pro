@@ -273,3 +273,19 @@
   color: var(--dashboard-text-muted) !important;
   opacity: 0.7;
 }
+
+/* Very specific overrides for stubborn elements */
+.calendar-container .rbc-calendar .rbc-month-view .rbc-month-row .rbc-date-cell .rbc-button-link,
+.calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label,
+.calendar-container .rbc-calendar .rbc-toolbar button,
+.calendar-container .rbc-calendar .rbc-header span,
+.calendar-container .rbc-calendar .rbc-row-content .rbc-date-cell,
+.calendar-container .rbc-calendar span {
+  color: var(--dashboard-accent-teal) !important;
+  font-weight: 600;
+}
+
+/* Navigation buttons specifically */
+.calendar-container .rbc-toolbar button span {
+  color: var(--dashboard-accent-teal) !important;
+}
