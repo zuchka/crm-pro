@@ -391,7 +391,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
                     className={cn(
                       "h-12 text-base font-medium transition-all",
                       selectedTime === time
-                        ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md"
+                        ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal"
                         : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
                     )}
                   >
