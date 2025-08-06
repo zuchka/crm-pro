@@ -118,6 +118,20 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
   const handleDateSelect = (date: Date | undefined) => {
     setSelectedDate(date);
     form.setValue("date", date as Date);
+
+    // Generate random available times for the selected date
+    if (date) {
+      const randomTimes = generateRandomTimes();
+      setAvailableTimes(randomTimes);
+
+      // Reset selected time when date changes
+      setSelectedTime("");
+      form.setValue("time", "");
+    } else {
+      setAvailableTimes([]);
+      setSelectedTime("");
+      form.setValue("time", "");
+    }
   };
 
   const handleTimeSelect = (time: string) => {
