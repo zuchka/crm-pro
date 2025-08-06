@@ -200,18 +200,18 @@
 /* Popup Styles */
 .rbc-overlay {
   background-color: var(--dashboard-card);
-  border: 1px solid var(--dashboard-sidebar);
+  border: 1px solid var(--dashboard-accent-teal);
   border-radius: 6px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  color: var(--dashboard-text-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: var(--dashboard-accent-teal);
 }
 
 .rbc-overlay-header {
   background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-text-primary);
+  color: var(--dashboard-accent-teal);
   padding: 8px 12px;
   border-bottom: 1px solid var(--dashboard-sidebar);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Show More Link */
