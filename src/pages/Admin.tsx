@@ -365,6 +365,11 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
+          {/* Calendar Tab */}
+          <TabsContent value="calendar" className="space-y-6">
+            <CalendarComponent />
+          </TabsContent>
+
           {/* Users Tab */}
           <TabsContent value="users" className="space-y-6">
             <Card className="bg-dashboard-card border-dashboard-sidebar">
