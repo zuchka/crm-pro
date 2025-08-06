@@ -1,7 +1,7 @@
 /* React Big Calendar Custom Styles for Dark Theme */
 .rbc-calendar {
   background-color: transparent;
-  color: var(--dashboard-text-primary);
+  color: var(--dashboard-accent-teal);
 }
 
 .rbc-header {
