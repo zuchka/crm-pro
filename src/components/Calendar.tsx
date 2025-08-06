@@ -354,7 +354,15 @@ const Calendar = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="calendar-container" style={{ height: "600px" }}>
+          <div
+            className="calendar-container"
+            style={{
+              height: "600px",
+              '--rbc-color': 'rgb(169, 223, 216)',
+              '--rbc-bg-color': 'var(--dashboard-card)',
+              '--rbc-border-color': 'var(--dashboard-sidebar)',
+            } as React.CSSProperties}
+          >
             <BigCalendar
               localizer={localizer}
               events={milestones}
@@ -367,7 +375,10 @@ const Calendar = () => {
               eventPropGetter={eventStyleGetter}
               onSelectEvent={(event) => setSelectedEvent(event as Milestone)}
               popup
-              style={{ height: "100%" }}
+              style={{
+                height: "100%",
+                color: 'rgb(169, 223, 216)',
+              }}
               formats={{
                 monthHeaderFormat: "MMMM YYYY",
                 dayHeaderFormat: "dddd MMM DD",
