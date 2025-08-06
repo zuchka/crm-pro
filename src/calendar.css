@@ -74,17 +74,18 @@
 
 .rbc-toolbar button {
   background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-text-primary);
-  border: 1px solid var(--dashboard-sidebar);
+  color: var(--dashboard-accent-teal);
+  border: 1px solid var(--dashboard-accent-teal);
   padding: 6px 12px;
   border-radius: 4px;
   margin: 0 2px;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .rbc-toolbar button:hover {
-  background-color: var(--dashboard-card);
-  color: var(--dashboard-text-primary);
+  background-color: var(--dashboard-accent-teal);
+  color: var(--dashboard-dark);
 }
 
 .rbc-toolbar button.rbc-active {
@@ -99,8 +100,8 @@
 }
 
 .rbc-toolbar-label {
-  color: var(--dashboard-text-primary);
-  font-weight: 600;
+  color: var(--dashboard-accent-teal);
+  font-weight: 700;
   font-size: 18px;
 }
 
