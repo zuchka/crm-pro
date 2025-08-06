@@ -322,3 +322,20 @@ span[class*="rbc"] * {
 .calendar-container div[style*="color"] {
   color: rgb(169, 223, 216) !important;
 }
+
+/* Target the specific elements mentioned in the diff */
+.calendar-container button[style*="color: rgb(55, 58, 60)"],
+.calendar-container span[style*="color: rgb(55, 58, 60)"],
+.calendar-container *[style*="color: rgb(55, 58, 60)"] {
+  color: rgb(169, 223, 216) !important;
+}
+
+/* Catch-all for any dark text colors */
+.calendar-container *[style*="color: rgb(0,"],
+.calendar-container *[style*="color: rgb(55,"],
+.calendar-container *[style*="color: rgb(33,"],
+.calendar-container *[style*="color: #000"],
+.calendar-container *[style*="color: #333"],
+.calendar-container *[style*="color: black"] {
+  color: rgb(169, 223, 216) !important;
+}
