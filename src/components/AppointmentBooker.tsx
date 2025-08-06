@@ -22,7 +22,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CalendarIcon, Clock, User, Mail, Phone, ArrowRight, Check } from "lucide-react";
+import {
+  CalendarIcon,
+  Clock,
+  User,
+  Mail,
+  Phone,
+  ArrowRight,
+  Check,
+} from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
@@ -110,9 +118,24 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
 
   // Meeting types
   const meetingTypes = [
-    { value: "demo", label: "Product Demo", duration: "30 min", description: "See CRMPro in action" },
-    { value: "consultation", label: "Sales Consultation", duration: "45 min", description: "Discuss your specific needs" },
-    { value: "implementation", label: "Implementation Call", duration: "60 min", description: "Plan your CRM setup" },
+    {
+      value: "demo",
+      label: "Product Demo",
+      duration: "30 min",
+      description: "See CRMPro in action",
+    },
+    {
+      value: "consultation",
+      label: "Sales Consultation",
+      duration: "45 min",
+      description: "Discuss your specific needs",
+    },
+    {
+      value: "implementation",
+      label: "Implementation Call",
+      duration: "60 min",
+      description: "Plan your CRM setup",
+    },
   ];
 
   const handleDateSelect = (date: Date | undefined) => {
@@ -155,7 +178,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
     alert(
       `Appointment scheduled for ${format(values.date, "PPP")} at ${
         values.time
-      }. We'll send a confirmation email to ${values.email}.`
+      }. We'll send a confirmation email to ${values.email}.`,
     );
     onClose?.();
   };
@@ -191,7 +214,9 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
               <span>{selectedTime}</span>
             </div>
             <div className="w-1 h-1 bg-dashboard-dark/30 rounded-full"></div>
-            <span>{meetingTypes.find(m => m.value === selectedMeetingType)?.label}</span>
+            <span>
+              {meetingTypes.find((m) => m.value === selectedMeetingType)?.label}
+            </span>
           </div>
         </div>
 
@@ -374,28 +399,35 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
               disabled={(date) => isWeekend(date) || isPastDate(date)}
               className="scale-110"
               classNames={{
-                months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+                months:
+                  "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
                 month: "space-y-4",
                 caption: "flex justify-center pt-1 relative items-center",
                 caption_label: "text-lg font-semibold text-dashboard-dark",
                 nav: "space-x-1 flex items-center",
                 nav_button: cn(
-                  "h-8 w-8 bg-transparent p-0 opacity-70 hover:opacity-100 border border-dashboard-dark/30 rounded-md text-dashboard-dark hover:bg-dashboard-dark/10"
+                  "h-8 w-8 bg-transparent p-0 opacity-70 hover:opacity-100 border border-dashboard-dark/30 rounded-md text-dashboard-dark hover:bg-dashboard-dark/10",
                 ),
                 nav_button_previous: "absolute left-1",
                 nav_button_next: "absolute right-1",
                 table: "w-full border-collapse space-y-1",
                 head_row: "flex",
-                head_cell: "text-dashboard-dark/70 rounded-md w-12 font-medium text-sm",
+                head_cell:
+                  "text-dashboard-dark/70 rounded-md w-12 font-medium text-sm",
                 row: "flex w-full mt-2",
                 cell: "h-12 w-12 text-center text-sm p-0 relative rounded-md transition-colors",
                 day: "h-12 w-12 p-0 font-medium text-dashboard-dark aria-selected:opacity-100 rounded-md hover:bg-dashboard-dark/10 transition-colors",
                 day_range_end: "day-range-end",
-                day_selected: "bg-dashboard-accent-teal text-dashboard-dark hover:bg-dashboard-accent-teal/90 hover:text-dashboard-dark font-semibold",
-                day_today: "bg-dashboard-accent-teal/20 text-dashboard-dark font-semibold border border-dashboard-accent-teal/40",
-                day_outside: "text-dashboard-dark/50 opacity-70 hover:text-dashboard-dark/70",
-                day_disabled: "text-dashboard-dark/30 opacity-40 cursor-not-allowed hover:bg-transparent",
-                day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+                day_selected:
+                  "bg-dashboard-accent-teal text-dashboard-dark hover:bg-dashboard-accent-teal/90 hover:text-dashboard-dark font-semibold",
+                day_today:
+                  "bg-dashboard-accent-teal/20 text-dashboard-dark font-semibold border border-dashboard-accent-teal/40",
+                day_outside:
+                  "text-dashboard-dark/50 opacity-70 hover:text-dashboard-dark/70",
+                day_disabled:
+                  "text-dashboard-dark/30 opacity-40 cursor-not-allowed hover:bg-transparent",
+                day_range_middle:
+                  "aria-selected:bg-accent aria-selected:text-accent-foreground",
                 day_hidden: "invisible",
               }}
             />
@@ -427,20 +459,22 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
               ) : (
                 <div className="grid grid-cols-2 gap-3">
                   {availableTimes.map((time) => (
-                  <Button
-                    key={time}
-                    variant={selectedTime === time ? "default" : "outline"}
-                    onClick={() => handleTimeSelect(time)}
-                    className={cn(
-                      "h-12 text-base font-medium transition-all",
-                      selectedTime === time
-                        ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal"
-                        : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
-                    )}
-                  >
-                    {selectedTime === time && <Check className="w-4 h-4 mr-2" />}
-                    {time}
-                  </Button>
+                    <Button
+                      key={time}
+                      variant={selectedTime === time ? "default" : "outline"}
+                      onClick={() => handleTimeSelect(time)}
+                      className={cn(
+                        "h-12 text-base font-medium transition-all",
+                        selectedTime === time
+                          ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal"
+                          : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40",
+                      )}
+                    >
+                      {selectedTime === time && (
+                        <Check className="w-4 h-4 mr-2" />
+                      )}
+                      {time}
+                    </Button>
                   ))}
                 </div>
               )}
@@ -462,33 +496,45 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
               {meetingTypes.map((type) => (
                 <Button
                   key={type.value}
-                  variant={selectedMeetingType === type.value ? "default" : "outline"}
+                  variant={
+                    selectedMeetingType === type.value ? "default" : "outline"
+                  }
                   onClick={() => handleMeetingTypeSelect(type.value)}
                   className={cn(
                     "w-full h-auto p-4 text-left justify-start transition-all",
                     selectedMeetingType === type.value
                       ? "bg-dashboard-dark text-dashboard-accent-teal shadow-md border-dashboard-dark hover:bg-dashboard-dark/90 hover:text-dashboard-accent-teal"
-                      : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40"
+                      : "border-dashboard-dark/20 text-dashboard-dark hover:bg-dashboard-dark/5 hover:border-dashboard-dark/40",
                   )}
                 >
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-3">
-                      {selectedMeetingType === type.value && <Check className="w-4 h-4" />}
+                      {selectedMeetingType === type.value && (
+                        <Check className="w-4 h-4" />
+                      )}
                       <div>
-                        <div className="font-semibold text-base">{type.label}</div>
-                        <div className={cn(
-                          "text-sm",
-                          selectedMeetingType === type.value ? "text-dashboard-accent-teal/80" : "text-dashboard-dark/60"
-                        )}>
+                        <div className="font-semibold text-base">
+                          {type.label}
+                        </div>
+                        <div
+                          className={cn(
+                            "text-sm",
+                            selectedMeetingType === type.value
+                              ? "text-dashboard-accent-teal/80"
+                              : "text-dashboard-dark/60",
+                          )}
+                        >
                           {type.description}
                         </div>
                       </div>
                     </div>
-                    <Badge 
-                      variant="secondary" 
+                    <Badge
+                      variant="secondary"
                       className={cn(
                         "text-xs",
-                        selectedMeetingType === type.value ? "bg-dashboard-accent-teal/20 text-dashboard-accent-teal" : ""
+                        selectedMeetingType === type.value
+                          ? "bg-dashboard-accent-teal/20 text-dashboard-accent-teal"
+                          : "",
                       )}
                     >
                       {type.duration}
@@ -510,7 +556,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
             "h-14 px-12 text-lg font-semibold transition-all",
             canContinue
               ? "bg-dashboard-dark text-dashboard-accent-teal hover:bg-dashboard-dark/90 shadow-lg"
-              : "bg-dashboard-dark/40 text-dashboard-dark/60 cursor-not-allowed"
+              : "bg-dashboard-dark/40 text-dashboard-dark/60 cursor-not-allowed",
           )}
         >
           Continue
