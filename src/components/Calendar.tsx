@@ -46,7 +46,7 @@ interface Milestone extends Event {
 
 const Calendar = () => {
   const [view, setView] = useState<View>("month");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(2025, 7, 1)); // Start with August 2025 to show our events
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Milestone | null>(null);
 
