@@ -157,13 +157,13 @@ const Calendar = () => {
 
   const getTypeColor = (type: Milestone["type"]) => {
     switch (type) {
-      case "meeting": return "#3B82F6";
-      case "demo": return "#10B981";
-      case "proposal": return "#F59E0B";
-      case "follow-up": return "#8B5CF6";
-      case "deadline": return "#EF4444";
-      case "contract": return "#059669";
-      default: return "#6B7280";
+      case "meeting": return "#20AEF3"; // dashboard-accent-blue
+      case "demo": return "#A9DFD8"; // dashboard-accent-teal
+      case "proposal": return "#FCB859"; // dashboard-accent-orange
+      case "follow-up": return "#F2C8ED"; // dashboard-accent-pink
+      case "deadline": return "#EF4444"; // bright red for urgency
+      case "contract": return "#10B981"; // bright green for success
+      default: return "#87888C"; // dashboard-text-accent
     }
   };
 
