@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import AppointmentBooker from "@/components/AppointmentBooker";
 import {
   Users,
   BarChart3,
