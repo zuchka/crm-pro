@@ -168,14 +168,19 @@ const Calendar = () => {
   };
 
   const eventStyleGetter = (event: Milestone) => {
+    const bgColor = getTypeColor(event.type);
     return {
       style: {
-        backgroundColor: getTypeColor(event.type),
-        borderRadius: "4px",
-        opacity: 0.8,
-        color: "white",
-        border: "0px",
+        backgroundColor: bgColor,
+        borderRadius: "6px",
+        opacity: 0.95,
+        color: ["#A9DFD8", "#FCB859", "#F2C8ED"].includes(bgColor) ? "#1a1a1a" : "white",
+        border: `2px solid ${bgColor}`,
         display: "block",
+        fontWeight: "600",
+        fontSize: "12px",
+        padding: "2px 6px",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
       },
     };
   };
