@@ -152,8 +152,9 @@
 }
 
 .rbc-time-slot {
-  color: var(--dashboard-text-muted);
+  color: var(--dashboard-accent-teal);
   font-size: 12px;
+  font-weight: 500;
 }
 
 /* Week/Day View Styles */
