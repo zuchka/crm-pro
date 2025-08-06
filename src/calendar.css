@@ -241,3 +241,25 @@
 .calendar-container .rbc-calendar {
   font-family: inherit;
 }
+
+/* Additional text color overrides */
+.rbc-calendar * {
+  color: inherit;
+}
+
+.rbc-calendar .rbc-month-view,
+.rbc-calendar .rbc-time-view,
+.rbc-calendar .rbc-agenda-view {
+  color: var(--dashboard-accent-teal);
+}
+
+.rbc-calendar .rbc-button-link {
+  color: var(--dashboard-accent-teal);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.rbc-calendar .rbc-button-link:hover {
+  color: var(--dashboard-accent-teal);
+  text-decoration: underline;
+}
