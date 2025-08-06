@@ -61,6 +61,7 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [selectedMeetingType, setSelectedMeetingType] = useState<string>("");
   const [showContactForm, setShowContactForm] = useState(false);
+  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -74,16 +75,38 @@ const AppointmentBooker: React.FC<AppointmentBookerProps> = ({ onClose }) => {
     },
   });
 
-  // Available time slots
-  const timeSlots = [
+  // All possible time slots
+  const allTimeSlots = [
     "09:00 AM",
-    "10:00 AM", 
+    "09:30 AM",
+    "10:00 AM",
+    "10:30 AM",
     "11:00 AM",
+    "11:30 AM",
+    "12:00 PM",
+    "12:30 PM",
     "01:00 PM",
+    "01:30 PM",
     "02:00 PM",
+    "02:30 PM",
     "03:00 PM",
+    "03:30 PM",
     "04:00 PM",
+    "04:30 PM",
+    "05:00 PM",
   ];
+
+  // Generate random available times for selected date
+  const generateRandomTimes = () => {
+    const numSlots = Math.floor(Math.random() * 8) + 4; // 4-11 available slots
+    const shuffled = [...allTimeSlots].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, numSlots).sort((a, b) => {
+      // Sort by time order
+      const timeA = new Date(`1970/01/01 ${a}`);
+      const timeB = new Date(`1970/01/01 ${b}`);
+      return timeA.getTime() - timeB.getTime();
+    });
+  };
 
   // Meeting types
   const meetingTypes = [
