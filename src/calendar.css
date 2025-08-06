@@ -107,8 +107,8 @@
 
 .rbc-off-range,
 .rbc-off-range * {
-  color: var(--dashboard-text-muted) !important;
-  opacity: 0.7;
+  color: #4a4a4a !important;
+  opacity: 0.9;
 }
 
 /* Event styles */
