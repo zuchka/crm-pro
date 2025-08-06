@@ -181,19 +181,20 @@
 
 .rbc-agenda-view tbody > tr > td {
   border-top: 1px solid var(--dashboard-sidebar);
-  color: var(--dashboard-text-primary);
+  color: var(--dashboard-accent-teal);
   padding: 8px;
 }
 
 .rbc-agenda-date-cell {
   background-color: var(--dashboard-sidebar);
-  color: var(--dashboard-text-primary);
-  font-weight: 500;
+  color: var(--dashboard-accent-teal);
+  font-weight: 600;
 }
 
 .rbc-agenda-time-cell {
-  color: var(--dashboard-text-muted);
+  color: var(--dashboard-accent-teal);
   font-size: 12px;
+  font-weight: 500;
 }
 
 /* Popup Styles */
