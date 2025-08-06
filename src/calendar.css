@@ -41,8 +41,8 @@
 }
 
 .rbc-off-range-bg {
-  background-color: var(--dashboard-dark);
-  opacity: 0.5;
+  background-color: #0d0e15;
+  opacity: 0.8;
 }
 
 .rbc-today {
