@@ -604,18 +604,13 @@ const Index = () => {
 
       {/* Schedule Demo Dialog */}
       <Dialog open={showScheduleDialog} onOpenChange={setShowScheduleDialog}>
-        <DialogContent className="bg-dashboard-accent-teal border-dashboard-accent-teal">
+        <DialogContent className="bg-dashboard-accent-teal border-dashboard-accent-teal max-w-5xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-dashboard-dark text-center">
-              Schedule Demo
+              Schedule Your Demo
             </DialogTitle>
           </DialogHeader>
-          {/* Empty for now - content will be added later */}
-          <div className="min-h-[200px] flex items-center justify-center">
-            <p className="text-dashboard-dark/70">
-              Dialog content will be added here
-            </p>
-          </div>
+          <AppointmentBooker onClose={() => setShowScheduleDialog(false)} />
         </DialogContent>
       </Dialog>
     </div>
