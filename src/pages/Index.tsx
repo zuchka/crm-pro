@@ -121,6 +121,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="h-14 px-8 text-base bg-dashboard-accent-teal text-dashboard-dark hover:!bg-dashboard-accent-teal/80"
+                onClick={() => setShowScheduleDialog(true)}
               >
                 Schedule Demo
               </Button>
