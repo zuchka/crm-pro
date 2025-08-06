@@ -90,8 +90,8 @@ const Calendar = () => {
     {
       id: "1",
       title: "Demo Meeting - Acme Corp",
-      start: new Date(2024, 0, 20, 10, 0),
-      end: new Date(2024, 0, 20, 11, 0),
+      start: new Date(2025, 7, 8, 10, 0), // August 8, 2025
+      end: new Date(2025, 7, 8, 11, 0),
       deal: deals[0],
       type: "demo",
       description: "Product demonstration for key stakeholders",
@@ -99,8 +99,8 @@ const Calendar = () => {
     {
       id: "2",
       title: "Proposal Deadline - TechStart",
-      start: new Date(2024, 0, 22, 17, 0),
-      end: new Date(2024, 0, 22, 17, 30),
+      start: new Date(2025, 7, 12, 17, 0), // August 12, 2025
+      end: new Date(2025, 7, 12, 17, 30),
       deal: deals[1],
       type: "deadline",
       description: "Final proposal submission deadline",
@@ -108,8 +108,8 @@ const Calendar = () => {
     {
       id: "3",
       title: "Follow-up Call - Global Solutions",
-      start: new Date(2024, 0, 25, 14, 0),
-      end: new Date(2024, 0, 25, 15, 0),
+      start: new Date(2025, 7, 15, 14, 0), // August 15, 2025
+      end: new Date(2025, 7, 15, 15, 0),
       deal: deals[2],
       type: "follow-up",
       description: "Check on requirements and next steps",
@@ -117,8 +117,8 @@ const Calendar = () => {
     {
       id: "4",
       title: "Contract Meeting - Acme Corp",
-      start: new Date(2024, 0, 28, 15, 0),
-      end: new Date(2024, 0, 28, 16, 30),
+      start: new Date(2025, 7, 20, 15, 0), // August 20, 2025
+      end: new Date(2025, 7, 20, 16, 30),
       deal: deals[0],
       type: "contract",
       description: "Final contract negotiation and signing",
@@ -126,11 +126,20 @@ const Calendar = () => {
     {
       id: "5",
       title: "Initial Meeting - SecureBank",
-      start: new Date(2024, 0, 30, 11, 0),
-      end: new Date(2024, 0, 30, 12, 0),
+      start: new Date(2025, 7, 25, 11, 0), // August 25, 2025
+      end: new Date(2025, 7, 25, 12, 0),
       deal: deals[3],
       type: "meeting",
       description: "Discovery meeting to understand requirements",
+    },
+    {
+      id: "6",
+      title: "Proposal Review - TechStart",
+      start: new Date(2025, 7, 28, 9, 0), // August 28, 2025
+      end: new Date(2025, 7, 28, 10, 30),
+      deal: deals[1],
+      type: "proposal",
+      description: "Review and finalize proposal details",
     },
   ];
 
