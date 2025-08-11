@@ -230,7 +230,7 @@ export default function Step2() {
 
           {/* How did you hear about Builder */}
           <div className="space-y-4">
-            <Label className="text-base font-medium">
+            <Label className="text-base font-medium text-dashboard-text-primary">
               How did you hear about Builder?
             </Label>
             <div className="grid gap-4 md:grid-cols-2">
