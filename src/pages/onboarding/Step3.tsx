@@ -137,7 +137,7 @@ export default function Step3() {
 
           {/* Account Summary */}
           <div className="rounded-md border border-gray-200 bg-gray-50 p-4">
-            <h3 className="mb-3 text-sm font-medium text-gray-900">
+            <h3 className="mb-3 text-sm font-medium text-dashboard-text-primary">
               Account Summary
             </h3>
             <div className="space-y-2 text-xs">
