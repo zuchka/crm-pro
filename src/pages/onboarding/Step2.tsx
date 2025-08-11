@@ -122,10 +122,10 @@ export default function Step2() {
     <OnboardingLayout currentStep={2}>
       <div className="p-8">
         <div className="mb-8">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900">
+          <h2 className="mb-2 text-xl font-semibold text-dashboard-text-primary">
             Tell us about yourself
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-dashboard-text-secondary">
             Help us personalize your Builder experience with some basic
             information.
           </p>
