@@ -136,32 +136,32 @@ export default function Step3() {
           </div>
 
           {/* Account Summary */}
-          <div className="rounded-md border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-md border border-gray-600 bg-gray-800 p-4">
             <h3 className="mb-3 text-sm font-medium text-dashboard-text-primary">
               Account Summary
             </h3>
             <div className="space-y-2 text-xs">
               <div className="flex">
-                <span className="w-16 font-medium text-gray-600">Name:</span>
-                <span className="text-gray-600">
+                <span className="w-16 font-medium text-dashboard-text-secondary">Name:</span>
+                <span className="text-dashboard-text-secondary">
                   {data.fullName || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-gray-600">Email:</span>
-                <span className="text-gray-600">
+                <span className="w-16 font-medium text-dashboard-text-secondary">Email:</span>
+                <span className="text-dashboard-text-secondary">
                   {data.workEmail || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-gray-600">Company:</span>
-                <span className="text-gray-600">
+                <span className="w-16 font-medium text-dashboard-text-secondary">Company:</span>
+                <span className="text-dashboard-text-secondary">
                   {data.companyName || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-gray-600">Role:</span>
-                <span className="text-gray-600">
+                <span className="w-16 font-medium text-dashboard-text-secondary">Role:</span>
+                <span className="text-dashboard-text-secondary">
                   {data.jobRole || "Not provided"}
                 </span>
               </div>
@@ -170,7 +170,7 @@ export default function Step3() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-8 flex items-center justify-between border-t border-gray-200 pt-6">
+        <div className="mt-8 flex items-center justify-between border-t border-gray-700 pt-6">
           <Button
             variant="outline"
             onClick={handleBack}
