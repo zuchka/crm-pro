@@ -254,7 +254,7 @@ export default function Step2() {
 
           {/* Primary Goal */}
           <div className="space-y-4">
-            <Label className="text-base font-medium">
+            <Label className="text-base font-medium text-dashboard-text-primary">
               What's your primary goal with Builder?
             </Label>
             <RadioGroup
