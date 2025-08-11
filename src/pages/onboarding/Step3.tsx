@@ -106,11 +106,11 @@ export default function Step3() {
                 <div className="space-y-1">
                   <Label
                     htmlFor="productUpdates"
-                    className="text-sm font-medium text-gray-900"
+                    className="text-sm font-medium text-dashboard-text-primary"
                   >
                     Product updates and tips
                   </Label>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-dashboard-text-secondary">
                     Get helpful tips and learn about new Builder features
                   </p>
                 </div>
