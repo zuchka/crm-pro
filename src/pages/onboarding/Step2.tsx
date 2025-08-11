@@ -285,7 +285,7 @@ export default function Step2() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-8 flex items-center justify-between border-t border-gray-200 pt-6">
+        <div className="mt-8 flex items-center justify-between border-t border-gray-700 pt-6">
           <Button variant="outline" onClick={handleBack}>
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back
