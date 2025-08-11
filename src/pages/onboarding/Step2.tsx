@@ -243,7 +243,7 @@ export default function Step2() {
                   />
                   <Label
                     htmlFor={option.id}
-                    className="text-sm font-normal text-gray-900"
+                    className="text-sm font-normal text-dashboard-text-primary"
                   >
                     {option.label}
                   </Label>
