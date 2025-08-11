@@ -56,10 +56,10 @@ export default function Step3() {
     >
       <div className="p-8">
         <div className="mb-8">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900">
+          <h2 className="mb-2 text-xl font-semibold text-dashboard-text-primary">
             Almost done!
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-dashboard-text-secondary">
             Just a few final preferences to personalize your experience with
             Builder.
           </p>
