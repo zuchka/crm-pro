@@ -272,11 +272,11 @@ export default function Step2() {
                   <div className="space-y-1">
                     <Label
                       htmlFor={goal.id}
-                      className="text-sm font-medium text-gray-900"
+                      className="text-sm font-medium text-dashboard-text-primary"
                     >
                       {goal.title}
                     </Label>
-                    <p className="text-xs text-gray-600">{goal.description}</p>
+                    <p className="text-xs text-dashboard-text-secondary">{goal.description}</p>
                   </div>
                 </div>
               ))}
