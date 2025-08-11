@@ -68,7 +68,7 @@ export default function Step3() {
         <div className="space-y-8">
           {/* Communication Preferences */}
           <div className="space-y-4">
-            <Label className="text-base font-medium">
+            <Label className="text-base font-medium text-dashboard-text-primary">
               Communication Preferences
             </Label>
 
