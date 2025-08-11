@@ -155,7 +155,7 @@ export default function Step2() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="workEmail">
+              <Label htmlFor="workEmail" className="text-dashboard-text-primary">
                 Work Email <span className="text-red-500">*</span>
               </Label>
               <Input
