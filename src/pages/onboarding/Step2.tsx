@@ -155,7 +155,10 @@ export default function Step2() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="workEmail" className="text-dashboard-text-primary">
+              <Label
+                htmlFor="workEmail"
+                className="text-dashboard-text-primary"
+              >
                 Work Email <span className="text-red-500">*</span>
               </Label>
               <Input
@@ -178,7 +181,10 @@ export default function Step2() {
           {/* Company and Role Row */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="companyName" className="text-dashboard-text-primary">
+              <Label
+                htmlFor="companyName"
+                className="text-dashboard-text-primary"
+              >
                 Company Name <span className="text-red-500">*</span>
               </Label>
               <Input
@@ -276,7 +282,9 @@ export default function Step2() {
                     >
                       {goal.title}
                     </Label>
-                    <p className="text-xs text-dashboard-text-secondary">{goal.description}</p>
+                    <p className="text-xs text-dashboard-text-secondary">
+                      {goal.description}
+                    </p>
                   </div>
                 </div>
               ))}

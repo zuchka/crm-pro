@@ -142,25 +142,33 @@ export default function Step3() {
             </h3>
             <div className="space-y-2 text-xs">
               <div className="flex">
-                <span className="w-16 font-medium text-dashboard-text-secondary">Name:</span>
+                <span className="w-16 font-medium text-dashboard-text-secondary">
+                  Name:
+                </span>
                 <span className="text-dashboard-text-secondary">
                   {data.fullName || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-dashboard-text-secondary">Email:</span>
+                <span className="w-16 font-medium text-dashboard-text-secondary">
+                  Email:
+                </span>
                 <span className="text-dashboard-text-secondary">
                   {data.workEmail || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-dashboard-text-secondary">Company:</span>
+                <span className="w-16 font-medium text-dashboard-text-secondary">
+                  Company:
+                </span>
                 <span className="text-dashboard-text-secondary">
                   {data.companyName || "Not provided"}
                 </span>
               </div>
               <div className="flex">
-                <span className="w-16 font-medium text-dashboard-text-secondary">Role:</span>
+                <span className="w-16 font-medium text-dashboard-text-secondary">
+                  Role:
+                </span>
                 <span className="text-dashboard-text-secondary">
                   {data.jobRole || "Not provided"}
                 </span>
