@@ -200,7 +200,7 @@ export default function Step2() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="jobRole">
+              <Label htmlFor="jobRole" className="text-dashboard-text-primary">
                 Job Role <span className="text-red-500">*</span>
               </Label>
               <Select
