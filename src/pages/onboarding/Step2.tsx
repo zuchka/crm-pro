@@ -135,7 +135,7 @@ export default function Step2() {
           {/* Name and Email Row */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="fullName">
+              <Label htmlFor="fullName" className="text-dashboard-text-primary">
                 Full Name <span className="text-red-500">*</span>
               </Label>
               <Input
