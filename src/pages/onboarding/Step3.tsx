@@ -84,11 +84,11 @@ export default function Step3() {
                 <div className="space-y-1">
                   <Label
                     htmlFor="emailNotifications"
-                    className="text-sm font-medium text-gray-900"
+                    className="text-sm font-medium text-dashboard-text-primary"
                   >
                     Email notifications
                   </Label>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-dashboard-text-secondary">
                     Receive important updates about your account and new
                     features
                   </p>
